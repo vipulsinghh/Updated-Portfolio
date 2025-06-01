@@ -1,11 +1,9 @@
-
 'use client';
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import TypingAnimation from "@/components/ui/typing-animation";
 import { ArrowRightIcon, BriefcaseIcon, HandIcon, GithubIcon, LinkedinIcon, MailIcon, PhoneIcon } from "lucide-react";
-// import { socialLinks } from "@/lib/data"; // Not strictly needed here as links are hardcoded below
 
 export default function HeroSection() {
   const textsToType = [
@@ -54,7 +52,7 @@ export default function HeroSection() {
             <h1 className="font-headline text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground mb-4 leading-tight">
               Vipul Kumar Singh
             </h1>
-            <div className="text-xl sm:text-2xl lg:text-3xl font-medium text-foreground mb-6 h-8 sm:h-10 lg:h-12">
+            <div className="text-xl sm:text-2xl lg:text-3xl font-medium text-foreground mb-6 h-8 sm:h-10 lg:h-12 overflow-hidden whitespace-nowrap">
               <TypingAnimation texts={textsToType} className="text-accent font-headline" />
             </div>
             <p className="text-base sm:text-lg text-muted-foreground mb-8">
