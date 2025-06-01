@@ -1,5 +1,7 @@
+
 "use client";
-import { useState, type FormEvent } from 'react';
+import { useEffect, useRef } from 'react';
+import { useFormState, useFormStatus } from 'react-dom';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -8,61 +10,66 @@ import { Label } from '@/components/ui/label';
 import { MailIcon, SendIcon, Loader2Icon } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import AnimatedDiv from '../ui/animated-div';
+import { sendEmailAction, type SendEmailFormState } from '@/app/actions/send-email';
+import { cn } from '@/lib/utils';
 
-interface FormData {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
+
+const initialState: SendEmailFormState = {
+  success: false,
+  message: '',
+  errors: {},
+};
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <Button type="submit" disabled={pending} className="w-full sm:w-auto">
+      {pending ? (
+        <>
+          <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />
+          Sending...
+        </>
+      ) : (
+        <>
+          <SendIcon className="mr-2 h-4 w-4" />
+          Send Message
+        </>
+      )}
+    </Button>
+  );
 }
 
 const ConnectSection = () => {
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
-  const [isLoading, setIsLoading] = useState(false);
+  const [formState, formAction] = useFormState(sendEmailAction, initialState);
   const { toast } = useToast();
+  const formRef = useRef<HTMLFormElement>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (isLoading) return;
-
-    setIsLoading(true);
-
-    // Simulate API call / email sending
-    await new Promise(resolve => setTimeout(resolve, 1500));
-
-    try {
-      // In a real app, you would send the formData to your backend here
-      console.log("Form data submitted:", formData);
-
-      toast({
-        title: "Message Sent!",
-        description: "Thanks for reaching out. I'll get back to you soon.",
-        variant: "default", 
-      });
-      setFormData({ name: '', email: '', subject: '', message: '' }); // Reset form
-    } catch (error) {
-      console.error("Form submission error:", error);
-      toast({
-        title: "Error Sending Message",
-        description: "Something went wrong. Please try again later.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsLoading(false);
+  useEffect(() => {
+    if (formState.message) {
+      if (formState.success) {
+        toast({
+          title: "Message Sent!",
+          description: formState.message,
+          variant: "default",
+        });
+        formRef.current?.reset(); // Reset form on success
+      } else {
+        let description = formState.message;
+        if (formState.errors?.server) {
+            description = formState.errors.server.join(' ');
+        } else if (formState.errors) {
+            const fieldErrors = Object.values(formState.errors).flat().join(' ');
+            if (fieldErrors) description = fieldErrors;
+        }
+        toast({
+          title: "Error Sending Message",
+          description: description || "An unknown error occurred.",
+          variant: "destructive",
+        });
+      }
     }
-  };
+  }, [formState, toast]);
 
-  const isFormInvalid = !formData.name || !formData.email || !formData.subject || !formData.message;
 
   return (
     <section id="connect" className="py-16 md:py-24 bg-background">
@@ -85,7 +92,7 @@ const ConnectSection = () => {
                 Have a project in mind, a question, or just want to say hi? Fill out the form below.
               </CardDescription>
             </CardHeader>
-            <form onSubmit={handleSubmit}>
+            <form action={formAction} ref={formRef}>
               <CardContent className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
@@ -94,10 +101,11 @@ const ConnectSection = () => {
                       id="name" 
                       name="name"
                       placeholder="Your Name" 
-                      value={formData.name}
-                      onChange={handleChange}
                       required 
                     />
+                    {formState.errors?.name && (
+                      <p className="text-xs text-destructive">{formState.errors.name.join(', ')}</p>
+                    )}
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email">Email Address</Label>
@@ -106,10 +114,11 @@ const ConnectSection = () => {
                       name="email"
                       type="email" 
                       placeholder="your@email.com" 
-                      value={formData.email}
-                      onChange={handleChange}
                       required 
                     />
+                     {formState.errors?.email && (
+                      <p className="text-xs text-destructive">{formState.errors.email.join(', ')}</p>
+                    )}
                   </div>
                 </div>
                 <div className="space-y-2">
@@ -118,10 +127,11 @@ const ConnectSection = () => {
                     id="subject" 
                     name="subject"
                     placeholder="What's this about?" 
-                    value={formData.subject}
-                    onChange={handleChange}
                     required 
                   />
+                  {formState.errors?.subject && (
+                    <p className="text-xs text-destructive">{formState.errors.subject.join(', ')}</p>
+                  )}
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="message">Message</Label>
@@ -129,27 +139,19 @@ const ConnectSection = () => {
                     id="message"
                     name="message"
                     placeholder="Your message..."
-                    value={formData.message}
-                    onChange={handleChange}
                     required
                     rows={5}
                   />
+                  {formState.errors?.message && (
+                    <p className="text-xs text-destructive">{formState.errors.message.join(', ')}</p>
+                  )}
                 </div>
+                 {formState.errors?.server && (
+                    <p className="text-sm text-destructive text-center">{formState.errors.server.join(', ')}</p>
+                )}
               </CardContent>
               <CardFooter>
-                <Button type="submit" disabled={isLoading || isFormInvalid} className="w-full sm:w-auto">
-                  {isLoading ? (
-                    <>
-                      <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <SendIcon className="mr-2 h-4 w-4" />
-                      Send Message
-                    </>
-                  )}
-                </Button>
+                <SubmitButton />
               </CardFooter>
             </form>
           </Card>
