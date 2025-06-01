@@ -59,12 +59,12 @@ export default function HeroSection() {
 
           {/* Right side: Static Image */}
           <div className="w-full flex justify-center items-center md:justify-end">
-            <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] xl:w-[600px] xl:h-[600px]">
+            <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px]">
               <Image
-                src="https://placehold.co/600x600.png" 
+                src="https://placehold.co/500x500.png" 
                 alt="Vipul Kumar Singh - Profile Picture"
-                width={600}
-                height={600}
+                width={500}
+                height={500}
                 className="rounded-full object-cover shadow-xl border-4 border-accent" 
                 priority
                 data-ai-hint="profile photo"
@@ -76,3 +76,4 @@ export default function HeroSection() {
     </section>
   );
 }
+
