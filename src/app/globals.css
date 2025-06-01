@@ -30,7 +30,7 @@ body {
     --muted: 220 15% 15%; /* Very Dark Grey for Muted Backgrounds */
     --muted-foreground: 210 10% 60%; /* Medium Grey for Muted Text */
 
-    --accent: 300 80% 60%; /* Vibrant Purple/Magenta as an accent */
+    --accent: 262 47% 63%; /* Soft Purple (#9575CD) */
     --accent-foreground: 210 20% 98%; /* White text on accent */
 
     --destructive: 0 62.8% 30.6%; /* Kept from previous dark theme */
@@ -38,7 +38,7 @@ body {
 
     --border: 220 15% 25%; /* Dark Border */
     --input: 220 15% 18%; /* Dark Input Background */
-    --ring: 300 80% 70%; /* Lighter Purple for Focus Rings */
+    --ring: 262 47% 73%; /* Lighter Soft Purple for Focus Rings */
 
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
@@ -55,7 +55,7 @@ body {
     --sidebar-accent: 220 15% 20%;
     --sidebar-accent-foreground: 210 15% 85%;
     --sidebar-border: 220 15% 25%;
-    --sidebar-ring: 300 80% 70%;
+    --sidebar-ring: 262 47% 73%; /* Lighter Soft Purple for Focus Rings */
   }
 
   /* Apply dark theme variables directly as it's the primary theme now */
@@ -72,13 +72,13 @@ body {
     --secondary-foreground: 210 15% 85%;
     --muted: 220 15% 15%;
     --muted-foreground: 210 10% 60%;
-    --accent: 300 80% 60%;
+    --accent: 262 47% 63%; /* Soft Purple (#9575CD) */
     --accent-foreground: 210 20% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     --border: 220 15% 25%;
     --input: 220 15% 18%;
-    --ring: 300 80% 70%;
+    --ring: 262 47% 73%; /* Lighter Soft Purple for Focus Rings */
     
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
@@ -93,7 +93,7 @@ body {
     --sidebar-accent: 220 15% 20%;
     --sidebar-accent-foreground: 210 15% 85%;
     --sidebar-border: 220 15% 25%;
-    --sidebar-ring: 300 80% 70%;
+    --sidebar-ring: 262 47% 73%; /* Lighter Soft Purple for Focus Rings */
   }
 }
 
@@ -103,22 +103,16 @@ body {
   }
   body {
     @apply bg-background text-foreground;
-    /* Ensure dark theme is default if no toggle exists */
-    /* If there's a toggle, it would add/remove .dark from html/body */
   }
 }
 
 .glassmorphic {
-  /* Adjusted for dark theme, more subtle */
   @apply bg-white/5 backdrop-filter backdrop-blur-md border border-white/10 shadow-xl;
 }
 .glassmorphic-dark {
-   /* This class becomes redundant if dark is the only theme, or can be refined */
   @apply bg-slate-900/10 backdrop-filter backdrop-blur-md border border-slate-700/20 shadow-xl;
 }
 
-
-/* For 3D card flip */
 .perspective {
   perspective: 1000px;
 }
@@ -131,4 +125,45 @@ body {
 .backface-hidden {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+}
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes gradient-border-animation {
+  0% { --gradient-angle: 0deg; }
+  100% { --gradient-angle: 360deg; }
+}
+
+.gradient-border-hover-effect {
+  position: relative;
+  z-index: 0; 
+}
+
+.gradient-border-hover-effect::before {
+  content: "";
+  position: absolute;
+  inset: -2px; 
+  border-radius: inherit; 
+  padding: 2px; 
+  background: conic-gradient(from var(--gradient-angle), #9575CD, #3F51B5, #40E0D0, #FFD700, #9575CD);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.gradient-border-hover-effect:hover::before {
+  opacity: 1;
+  animation: gradient-border-animation 4s linear infinite;
 }

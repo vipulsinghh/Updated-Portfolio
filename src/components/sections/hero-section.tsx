@@ -62,7 +62,7 @@ export default function HeroSection() {
           <div className="w-full flex justify-center items-center md:justify-end">
             <div className="relative w-[500px] h-[500px] rounded-full overflow-hidden shadow-xl border-4 border-accent">
               <Image
-                src="/Profile Hero Sec.PNG"
+                src="/images/Portflio Profile Hero Sec.PNG"
                 alt="Vipul Kumar Singh - Profile Picture"
                 width={500}
                 height={500}
