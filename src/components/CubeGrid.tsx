@@ -1,8 +1,9 @@
 
-"use client";
-import { Canvas, useFrame } from "@react-three/fiber";
-import type { Mesh } from "three"; // Using import type for Mesh
-import React, { useRef, useState, useEffect } from "react";
+'use client';
+
+import { Canvas, useFrame } from '@react-three/fiber';
+import type { Mesh } from 'three'; // Ensuring type-only import for Mesh
+import React, { useRef } from 'react';
 
 function Cube({ position }: { position: [number, number, number] }) {
   const meshRef = useRef<Mesh>(null!);
@@ -19,8 +20,8 @@ function CubeGroup() {
   const groupRef = useRef<any>(null); // Using any as per user example for now
   useFrame(() => {
     if (groupRef.current) {
-      groupRef.current.rotation.y += 0.005;
-      groupRef.current.rotation.x += 0.003;
+      groupRef.current.rotation.y += 0.01;
+      groupRef.current.rotation.x += 0.005;
     }
   });
 
@@ -48,21 +49,11 @@ function CubeGroup() {
 }
 
 export default function CubeGrid() {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  if (!isClient) {
-    // Return null or a minimal placeholder to avoid SSR/hydration issues with Canvas
-    return null; 
-  }
-
+  // No client-side mount check needed here as dynamic import with ssr:false handles it
   return (
     <Canvas style={{ height: 300, width: 300 }} camera={{ position: [0, 0, 5], fov: 50 }}>
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[5, 5, 10]} intensity={1.5} /> {/* Adjusted light for better visibility */}
+      <ambientLight intensity={0.3} /> {/* Adjusted from user example for potentially better visibility */}
+      <directionalLight position={[5, 5, 5]} intensity={1} /> {/* Adjusted light for better visibility */}
       <CubeGroup />
     </Canvas>
   );

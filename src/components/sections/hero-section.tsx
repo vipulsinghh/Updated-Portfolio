@@ -1,10 +1,10 @@
 
-"use client";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import TypingAnimation from "@/components/ui/typing-animation";
-import { ArrowRightIcon, BriefcaseIcon } from "lucide-react";
+'use client';
 import dynamic from 'next/dynamic';
+import Link from "next/link"; // Added Link for navigation
+import { Button } from "@/components/ui/button"; // Using ShadCN Button
+import TypingAnimation from "@/components/ui/typing-animation"; // Re-adding TypingAnimation
+import { ArrowRightIcon, BriefcaseIcon } from "lucide-react"; // Icons for buttons
 
 // Dynamically import the 3D Cube with SSR disabled
 const CubeGrid = dynamic(() => import('@/components/CubeGrid'), { 
@@ -12,7 +12,7 @@ const CubeGrid = dynamic(() => import('@/components/CubeGrid'), {
   loading: () => <div style={{ height: "300px", width: "300px", display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p className="text-muted-foreground">Loading 3D Grid...</p></div>,
 });
 
-const HeroSection = () => {
+export default function HeroSection() {
   const textsToType = [
     "Freelance Software Developer",
     "AI Automation Expert",
@@ -23,10 +23,10 @@ const HeroSection = () => {
   return (
     <section id="hero" className="relative min-h-[calc(100vh-5rem)] flex items-center py-16 md:py-24 bg-background text-foreground">
       <div className="absolute inset-0 opacity-[0.03] overflow-hidden">
-         {/* Subtle background pattern or animation could go here if desired */}
       </div>
       <div className="container mx-auto px-4 z-10">
         <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+          {/* Left side: Text */}
           <div className="md:text-left text-center">
             <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl font-bold text-primary mb-6 leading-tight">
               Vipul Kumar Singh
@@ -61,13 +61,14 @@ const HeroSection = () => {
               </Button>
             </div>
           </div>
+
+          {/* Right side: 3D Cube */}
           <div className="w-full h-[300px] md:h-[400px] flex justify-center items-center">
-            <CubeGrid />
+            {/* Conditionally render CubeGrid only on the client */}
+            {typeof window !== 'undefined' && <CubeGrid />}
           </div>
         </div>
       </div>
     </section>
   );
-};
-
-export default HeroSection;
+}
