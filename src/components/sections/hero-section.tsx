@@ -48,7 +48,7 @@ export default function HeroSection() {
                 </Link>
               </Button>
               <Button
-                variant="outline" 
+                variant="outline"
                 size="lg"
                 asChild
                 className="text-accent border-accent hover:bg-accent/10 hover:text-accent/90 font-semibold px-8 py-3 rounded-lg"
@@ -65,7 +65,7 @@ export default function HeroSection() {
           <div className="w-full flex justify-center items-center md:justify-end">
             <div className="relative w-[500px] h-[500px] rounded-full overflow-hidden shadow-xl border-4 border-accent/50 gradient-border-hover-effect">
               <Image
-                src="/Profile Hero Sec.PNG"
+                src="/images/Portflio Profile Hero Sec.PNG"
                 alt="Vipul Kumar Singh - Profile Picture"
                 width={500}
                 height={500}
