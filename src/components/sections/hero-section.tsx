@@ -1,3 +1,4 @@
+
 'use client';
 import Link from "next/link";
 import Image from "next/image";
@@ -57,15 +58,18 @@ export default function HeroSection() {
           </div>
 
           {/* Right side: Static Image */}
-          <div className="w-full h-[300px] md:h-[400px] flex justify-center items-center">
-            <Image
-              src="https://placehold.co/600x400.png"
-              alt="Abstract portfolio visual"
-              width={400}
-              height={400}
-              className="rounded-lg object-cover shadow-xl border border-border"
-              data-ai-hint="abstract geometric"
-            />
+          <div className="w-full flex justify-center items-center md:justify-end">
+            <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] xl:w-[600px] xl:h-[600px]">
+              <Image
+                src="https://placehold.co/600x600.png" 
+                alt="Vipul Kumar Singh - Profile Picture"
+                width={600}
+                height={600}
+                className="rounded-full object-cover shadow-xl border-4 border-accent" 
+                priority
+                data-ai-hint="profile photo"
+              />
+            </div>
           </div>
         </div>
       </div>
