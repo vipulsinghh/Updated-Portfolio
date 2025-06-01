@@ -5,14 +5,6 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import TypingAnimation from "@/components/ui/typing-animation";
 import { ArrowRightIcon, BriefcaseIcon } from "lucide-react";
-// import dynamic from "next/dynamic";
-
-// Dynamically import the 3D Cube with SSR disabled
-// const CubeGrid = dynamic(() => import('@/components/CubeGridClientOnly'), {
-//   ssr: false,
-//   loading: () => <div style={{ height: 300, width: 300, backgroundColor: 'hsl(var(--card))' }} />,
-// });
-
 
 export default function HeroSection() {
   const textsToType = [
@@ -67,13 +59,13 @@ export default function HeroSection() {
 
           {/* Right side: Static Image */}
           <div className="w-full flex justify-center items-center md:justify-end">
-            <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px]">
+            <div className="relative w-[500px] h-[500px] rounded-full overflow-hidden shadow-xl border-4 border-accent bg-pink-500"> {/* Added bg-pink-500 for debugging */}
               <Image
-                src="/Profile Hero Sec.PNG" 
+                src="/Profile Hero Sec.PNG"
                 alt="Vipul Kumar Singh - Profile Picture"
                 width={500}
                 height={500}
-                className="rounded-full object-cover shadow-xl border-4 border-accent" 
+                className="object-cover w-full h-full"
                 priority
               />
             </div>
@@ -83,4 +75,3 @@ export default function HeroSection() {
     </section>
   );
 }
-
