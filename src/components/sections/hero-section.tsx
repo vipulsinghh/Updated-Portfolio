@@ -6,6 +6,7 @@ import TypingAnimation from "@/components/ui/typing-animation";
 import { ArrowRightIcon, BriefcaseIcon } from "lucide-react";
 import dynamic from 'next/dynamic';
 
+// Dynamically import the 3D Cube with SSR disabled
 const CubeGrid = dynamic(() => import('@/components/CubeGrid'), { 
   ssr: false,
   loading: () => <div style={{ height: "300px", width: "300px", display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p className="text-muted-foreground">Loading 3D Grid...</p></div>,

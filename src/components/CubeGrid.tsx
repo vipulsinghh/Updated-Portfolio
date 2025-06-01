@@ -16,7 +16,7 @@ function Cube({ position }: { position: [number, number, number] }) {
 }
 
 function CubeGroup() {
-  const groupRef = useRef<any>(null); // Using any for groupRef as type can be complex
+  const groupRef = useRef<any>(null); // Using any as per user example for now
   useFrame(() => {
     if (groupRef.current) {
       groupRef.current.rotation.y += 0.005;
@@ -32,9 +32,11 @@ function CubeGroup() {
 
   for (let i = 0; i < gridSize; i++) {
     for (let j = 0; j < gridSize; j++) {
+        // Centering the grid
         positions.push([i * spacing - offset, j * spacing - offset, 0]);
     }
   }
+
 
   return (
     <group ref={groupRef} scale={0.75}> {/* Slightly scale down the group for better fit */}
@@ -53,13 +55,14 @@ export default function CubeGrid() {
   }, []);
 
   if (!isClient) {
-    return null; // Return null or a minimal placeholder
+    // Return null or a minimal placeholder to avoid SSR/hydration issues with Canvas
+    return null; 
   }
 
   return (
     <Canvas style={{ height: 300, width: 300 }} camera={{ position: [0, 0, 5], fov: 50 }}>
       <ambientLight intensity={0.5} />
-      <directionalLight position={[5, 5, 10]} intensity={1.5} />
+      <directionalLight position={[5, 5, 10]} intensity={1.5} /> {/* Adjusted light for better visibility */}
       <CubeGroup />
     </Canvas>
   );
