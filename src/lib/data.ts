@@ -1,4 +1,4 @@
-import { Code2Icon, ServerIcon, BrainCircuitIcon, DatabaseIcon, TerminalIcon, BriefcaseIcon, GraduationCapIcon, UsersIcon, DollarSignIcon, GithubIcon, LinkedinIcon, GlobeIcon, BarChartIcon, LayersIcon, BotIcon, PaletteIcon } from 'lucide-react';
+import { Code2Icon, ServerIcon, BrainCircuitIcon, DatabaseIcon, TerminalIcon, BriefcaseIcon, GraduationCapIcon, UsersIcon, DollarSignIcon, GithubIcon, LinkedinIcon, GlobeIcon, BarChartIcon, LayersIcon, BotIcon, PaletteIcon, MailIcon } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 export interface NavLink {
@@ -9,12 +9,12 @@ export interface NavLink {
 
 export const navLinks: NavLink[] = [
   { href: "#hero", label: "Home" },
+  { href: "#connect", label: "Connect", icon: MailIcon }, // Updated and reordered
   { href: "#education", label: "Education" },
   { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
   { href: "#experience", label: "Experience" },
   { href: "#services", label: "Services" },
-  { href: "#chatbot", label: "Chat" },
 ];
 
 export interface EducationItem {
@@ -225,5 +225,5 @@ export const pricingData: PricingTier[] = [
 
 export const socialLinks = [
   { name: "GitHub", url: "https://github.com/yourusername", icon: GithubIcon },
-  { name: "LinkedIn", url: "https://linkedin.com/in/yourusername", icon: LinkedinIcon }, // Placeholder URL
+  { name: "LinkedIn", url: "https://linkedin.com/in/yourusername", icon: LinkedinIcon },
 ];

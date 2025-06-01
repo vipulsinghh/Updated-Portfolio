@@ -36,7 +36,7 @@ const HeroSection = () => {
               </Link>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <Link href="#chatbot">
+              <Link href="#connect"> {/* Updated href */}
                 Get In Touch
                 <ArrowRightIcon className="ml-2 h-5 w-5" />
               </Link>
