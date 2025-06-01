@@ -4,7 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import TypingAnimation from "@/components/ui/typing-animation";
-import { ArrowRightIcon, BriefcaseIcon, HandIcon } from "lucide-react";
+import { ArrowRightIcon, BriefcaseIcon, HandIcon, GithubIcon, LinkedinIcon, MailIcon, PhoneIcon } from "lucide-react";
+import { socialLinks } from "@/lib/data"; // To get GitHub and LinkedIn URLs if needed, though direct use is fine here.
 
 export default function HeroSection() {
   const textsToType = [
@@ -12,6 +13,29 @@ export default function HeroSection() {
     "AI Automation Expert",
     "Web App Specialist",
     "Custom Software Solutions",
+  ];
+
+  const heroSocialLinks = [
+    {
+      name: "GitHub",
+      url: "https://github.com/vipulsinghh",
+      icon: GithubIcon,
+    },
+    {
+      name: "LinkedIn",
+      url: "https://www.linkedin.com/in/vipul-kumar-singh-779118193/",
+      icon: LinkedinIcon,
+    },
+    {
+      name: "Email",
+      url: "mailto:vipulsingh0110@gmail.com",
+      icon: MailIcon,
+    },
+    {
+      name: "Phone",
+      url: "tel:+917972883854",
+      icon: PhoneIcon,
+    },
   ];
 
   return (
@@ -33,10 +57,10 @@ export default function HeroSection() {
             <div className="text-xl sm:text-2xl md:text-3xl font-medium text-foreground mb-8 h-10 md:h-16">
               <TypingAnimation texts={textsToType} className="text-accent font-headline" />
             </div>
-            <p className="text-lg text-muted-foreground mb-12">
+            <p className="text-lg text-muted-foreground mb-10"> {/* Adjusted margin for new icons */}
               Crafting innovative software solutions with a focus on AI automation and modern web technologies. Let&apos;s build something amazing together.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center md:justify-start items-center gap-4">
+            <div className="flex flex-col sm:flex-row justify-center md:justify-start items-center gap-4 mb-6"> {/* Added margin bottom */}
               <Button
                 size="lg"
                 asChild
@@ -59,9 +83,19 @@ export default function HeroSection() {
                 </Link>
               </Button>
             </div>
+            {/* Social and Contact Icons */}
+            <div className="flex justify-center md:justify-start items-center space-x-4">
+              {heroSocialLinks.map((link) => (
+                <Button variant="ghost" size="icon" asChild key={link.name} className="text-muted-foreground hover:text-accent">
+                  <Link href={link.url} target={link.url.startsWith('http') ? '_blank' : undefined} rel={link.url.startsWith('http') ? 'noopener noreferrer' : undefined} aria-label={link.name}>
+                    <link.icon className="h-6 w-6" />
+                  </Link>
+                </Button>
+              ))}
+            </div>
           </div>
 
-          {/* Right side: Static Image */}
+          {/* Right side: Image */}
           <div className="w-full flex justify-center items-center md:justify-end">
             <div className="relative w-[500px] h-[500px] rounded-full overflow-hidden shadow-xl border-4 border-accent/50 gradient-border-hover-effect">
               <Image

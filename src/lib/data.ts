@@ -1,5 +1,5 @@
 
-import { Code2Icon, ServerIcon, BrainCircuitIcon, DatabaseIcon, TerminalIcon, BriefcaseIcon, GraduationCapIcon, UsersIcon, DollarSignIcon, GithubIcon, LinkedinIcon, GlobeIcon, BarChartIcon, LayersIcon, BotIcon, PaletteIcon, MailIcon, MessageCircleIcon } from 'lucide-react';
+import { Code2Icon, ServerIcon, BrainCircuitIcon, DatabaseIcon, TerminalIcon, BriefcaseIcon, GraduationCapIcon, UsersIcon, DollarSignIcon, GithubIcon, LinkedinIcon, GlobeIcon, BarChartIcon, LayersIcon, BotIcon, PaletteIcon, MailIcon, MessageCircleIcon, PhoneIcon } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 export interface NavLink {
@@ -120,7 +120,7 @@ export const projectsData: Project[] = [
     techStack: ["Next.js", "Firebase", "Genkit", "TypeScript"],
     imageUrl: "https://placehold.co/600x400.png",
     imageAiHint: "ecommerce ai",
-    githubUrl: "https://github.com",
+    githubUrl: "https://github.com/vipulsinghh", // Updated
     liveDemoUrl: "#",
   },
   {
@@ -131,7 +131,7 @@ export const projectsData: Project[] = [
     techStack: ["React", "Node.js", "MongoDB", "Python"],
     imageUrl: "https://placehold.co/600x400.png",
     imageAiHint: "workflow automation",
-    githubUrl: "https://github.com",
+    githubUrl: "https://github.com/vipulsinghh", // Updated
   },
   {
     id: "proj3",
@@ -142,6 +142,7 @@ export const projectsData: Project[] = [
     imageUrl: "https://placehold.co/600x400.png",
     imageAiHint: "data dashboard",
     liveDemoUrl: "#",
+    githubUrl: "https://github.com/vipulsinghh", // Updated
   },
 ];
 
@@ -226,8 +227,6 @@ export const pricingData: PricingTier[] = [
 
 
 export const socialLinks = [
-  { name: "GitHub", url: "https://github.com/vipulsinghh", icon: GithubIcon },
+  { name: "GitHub", url: "https://github.com/vipulsinghh", icon: GithubIcon }, // Ensured this is correct
   { name: "LinkedIn", url: "https://www.linkedin.com/in/vipul-kumar-singh-779118193/", icon: LinkedinIcon },
 ];
-
-    
