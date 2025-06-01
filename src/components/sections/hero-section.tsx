@@ -63,7 +63,7 @@ export default function HeroSection() {
 
           {/* Right side: Static Image */}
           <div className="w-full flex justify-center items-center md:justify-end">
-            <div className="relative w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px] rounded-full overflow-hidden shadow-xl border-4 border-accent/50 gradient-border-hover-effect">
+            <div className="relative w-[500px] h-[500px] rounded-full overflow-hidden shadow-xl border-4 border-accent/50 gradient-border-hover-effect">
               <Image
                 src="/Profile Hero Sec.PNG"
                 alt="Vipul Kumar Singh - Profile Picture"
