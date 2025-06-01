@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -149,7 +150,7 @@ body {
   inset: -2px; 
   border-radius: inherit; 
   padding: 2px; 
-  background: conic-gradient(from var(--gradient-angle), #9575CD, #3F51B5, #40E0D0, #FFD700, #9575CD);
+  background: conic-gradient(from var(--gradient-angle), #8A2BE2, #FF69B4, #FFA500, #ADFF2F, #20B2AA, #8A2BE2);
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
