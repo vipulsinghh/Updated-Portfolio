@@ -21,7 +21,7 @@ const ProjectCard3D: React.FC<ProjectCard3DProps> = ({ project }) => {
 
   return (
     <div
-      className="group perspective w-full h-80 md:h-96 rounded-xl gradient-border-hover-effect" // Added gradient effect to main container
+      className="group perspective w-full h-[24rem] sm:h-80 md:h-96 rounded-xl gradient-border-hover-effect" // Adjusted height for mobile
       onClick={handleFlip}
       onFocus={handleFlip}
       onBlur={() => setIsFlipped(false)}
