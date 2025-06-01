@@ -1,7 +1,7 @@
 import type {Config} from 'tailwindcss';
 
 export default {
-  darkMode: ['class'],
+  darkMode: ['class'], // Keep this if you ever want a light/dark toggle
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -97,13 +97,18 @@ export default {
         },
         'hero-pulse': {
           '0%, 100%': { opacity: '1', transform: 'scale(1)' },
-          '50%': { opacity: '0.8', transform: 'scale(1.05)' },
-        }
+          '50%': { opacity: '0.9', transform: 'scale(1.03)' }, // Adjusted for dark theme
+        },
+        'spin-slow': { // For potential CSS 3D cube
+          'from': { transform: 'rotateX(0deg) rotateY(0deg)' },
+          'to': { transform: 'rotateX(360deg) rotateY(360deg)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        'hero-pulse': 'hero-pulse 2s infinite ease-in-out',
+        'hero-pulse': 'hero-pulse 2.5s infinite ease-in-out',
+        'spin-slow': 'spin-slow 20s linear infinite', // For potential CSS 3D cube
       },
     },
   },

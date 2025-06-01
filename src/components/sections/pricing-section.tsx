@@ -20,8 +20,8 @@ const PricingCard: React.FC<{ tier: PricingTier, index: number }> = ({ tier, ind
       className={cn("flex", tier.popular ? "transform md:scale-105" : "")}
     >
       <Card className={cn(
-        "flex flex-col w-full glassmorphic glassmorphic-dark hover:shadow-accent/30 hover:shadow-xl transition-all duration-300",
-        tier.popular ? "border-accent ring-2 ring-accent shadow-accent/20" : "border-border"
+        "flex flex-col w-full bg-card border-border hover:shadow-accent/30 hover:shadow-xl transition-all duration-300", // Removed glassmorphic
+        tier.popular ? "border-accent ring-2 ring-accent shadow-accent/20" : "hover:border-accent/70"
       )}>
         {tier.popular && (
           <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-accent-foreground px-3 py-1 text-sm font-semibold">
@@ -38,15 +38,22 @@ const PricingCard: React.FC<{ tier: PricingTier, index: number }> = ({ tier, ind
           <ul className="space-y-2 text-sm text-muted-foreground">
             {tier.features.map((feature, i) => (
               <li key={i} className="flex items-center">
-                <CheckCircle2Icon className="h-4 w-4 text-green-500 mr-2 shrink-0" />
+                <CheckCircle2Icon className="h-4 w-4 text-accent mr-2 shrink-0" /> {/* Accent for check icons */}
                 <span>{feature}</span>
               </li>
             ))}
           </ul>
         </CardContent>
         <CardFooter>
-          <Button className="w-full" variant={tier.popular ? "default" : "outline"} asChild>
-            <Link href="#chatbot">{tier.ctaText}</Link>
+          <Button 
+            className="w-full" 
+            variant={tier.popular ? "default" : "outline"} 
+            asChild
+            // For dark theme, default button likely light bg, dark text. Outline will be light border, light text.
+            // Or, make popular button use accent color
+            style={tier.popular ? { backgroundColor: 'hsl(var(--accent))', color: 'hsl(var(--accent-foreground))'} : {}}
+          >
+            <Link href="#connect">{tier.ctaText}</Link>
           </Button>
         </CardFooter>
       </Card>
@@ -56,7 +63,7 @@ const PricingCard: React.FC<{ tier: PricingTier, index: number }> = ({ tier, ind
 
 const PricingSection = () => {
   return (
-    <section id="services" className="py-16 md:py-24 bg-secondary">
+    <section id="services" className="py-16 md:py-24 bg-secondary/50"> {/* Adjusted background */}
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12 text-primary">
           Freelance Services
@@ -67,7 +74,7 @@ const PricingSection = () => {
           ))}
         </div>
         <p className="text-center text-muted-foreground mt-12">
-          Need something different? <Link href="#chatbot" className="text-accent hover:underline">Let&apos;s discuss your custom project!</Link>
+          Need something different? <Link href="#connect" className="text-accent hover:underline">Let&apos;s discuss your custom project!</Link>
         </p>
       </div>
     </section>

@@ -17,8 +17,8 @@ const Navbar = () => {
         variant="ghost"
         asChild
         className={cn(
-          "font-medium text-foreground hover:text-primary",
-          isMobile ? "w-full justify-start text-lg py-4" : ""
+          "font-medium text-foreground/80 hover:text-primary", // Adjusted text color for dark theme
+          isMobile ? "w-full justify-start text-lg py-4" : "text-sm"
         )}
         onClick={() => isMobile && setIsMobileMenuOpen(false)}
       >
@@ -30,16 +30,18 @@ const Navbar = () => {
     ));
 
   return (
-    <header className="sticky top-0 z-50 w-full glassmorphic glassmorphic-dark">
+    <header className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-border/50"> {/* Adjusted for dark theme */}
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
+          {/* You can replace UserCircle with a custom logo if you have one */}
+          {/* <Image src="/logo-dark.png" alt="Logo" width={32} height={32} /> */}
           <UserCircle className="h-8 w-8 text-primary" />
           <span className="text-xl font-bold font-headline text-primary">
             Vipul Kumar Singh
           </span>
         </Link>
 
-        <nav className="hidden md:flex items-center space-x-2">
+        <nav className="hidden md:flex items-center space-x-1">
           {renderNavLinks()}
         </nav>
 
@@ -51,7 +53,7 @@ const Navbar = () => {
                 <span className="sr-only">Open menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-background p-6">
+            <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-background p-6 border-l border-border/50">
               <div className="flex justify-between items-center mb-6">
                  <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
                     <UserCircle className="h-8 w-8 text-primary" />
@@ -64,7 +66,7 @@ const Navbar = () => {
                   </Button>
                 </SheetClose>
               </div>
-              <nav className="flex flex-col space-y-3">
+              <nav className="flex flex-col space-y-2">
                 {renderNavLinks(true)}
               </nav>
             </SheetContent>

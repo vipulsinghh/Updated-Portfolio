@@ -16,9 +16,9 @@ const EducationTimelineItem: React.FC<{ item: EducationItem, index: number }> = 
     >
       <div className="absolute left-0 top-5 h-full w-px bg-border group-last:h-0"></div>
       <div className="absolute left-[-0.4rem] top-5 transform translate-x-[-50%]">
-        <div className="w-4 h-4 rounded-full bg-primary border-2 border-background ring-2 ring-primary group-hover:scale-125 transition-transform"></div>
+        <div className="w-4 h-4 rounded-full bg-accent border-2 border-background ring-2 ring-accent group-hover:scale-125 transition-transform"></div> {/* Accent for timeline dot */}
       </div>
-      <Card className="ml-4 glassmorphic glassmorphic-dark group-hover:shadow-2xl transition-shadow duration-300">
+      <Card className="ml-4 bg-card border-border group-hover:shadow-2xl transition-shadow duration-300 group-hover:border-accent"> {/* Removed glassmorphic */}
         <CardHeader>
           <div className="flex items-center justify-between">
             <CardTitle className="font-headline text-xl text-primary">{item.degree}</CardTitle>
@@ -36,7 +36,7 @@ const EducationTimelineItem: React.FC<{ item: EducationItem, index: number }> = 
 
 const EducationSection = () => {
   return (
-    <section id="education" className="py-16 md:py-24 bg-secondary">
+    <section id="education" className="py-16 md:py-24 bg-secondary/50"> {/* Adjusted background */}
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12 text-primary">
           My Academic Journey

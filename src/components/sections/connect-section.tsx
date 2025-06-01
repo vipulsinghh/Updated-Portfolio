@@ -1,7 +1,6 @@
 
 "use client";
-import { useEffect, useRef, useActionState } from 'react'; // Updated import
-// Removed 'useFormState' from 'react-dom' as it's now imported from 'react' as 'useActionState'
+import { useEffect, useRef, useActionState } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -21,12 +20,9 @@ const initialState: SendEmailFormState = {
 };
 
 function SubmitButton() {
-  // useFormStatus needs to be imported from 'react-dom'
-  // For React 19+, if you're using it with useActionState from 'react',
-  // you still import useFormStatus from 'react-dom'
   const { pending } = require('react-dom').useFormStatus(); 
   return (
-    <Button type="submit" disabled={pending} className="w-full sm:w-auto">
+    <Button type="submit" disabled={pending} className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90">
       {pending ? (
         <>
           <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />
@@ -43,7 +39,7 @@ function SubmitButton() {
 }
 
 const ConnectSection = () => {
-  const [formState, formAction] = useActionState(sendEmailAction, initialState); // Updated hook
+  const [formState, formAction] = useActionState(sendEmailAction, initialState);
   const { toast } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -53,9 +49,9 @@ const ConnectSection = () => {
         toast({
           title: "Message Sent!",
           description: formState.message,
-          variant: "default",
+          variant: "default", // Will use new theme
         });
-        formRef.current?.reset(); // Reset form on success
+        formRef.current?.reset();
       } else {
         let description = formState.message;
         if (formState.errors?.server) {
@@ -67,7 +63,7 @@ const ConnectSection = () => {
         toast({
           title: "Error Sending Message",
           description: description || "An unknown error occurred.",
-          variant: "destructive",
+          variant: "destructive", // Will use new theme
         });
       }
     }
@@ -86,12 +82,12 @@ const ConnectSection = () => {
           <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12 text-primary">
             Let&apos;s Connect
           </h2>
-          <Card className="max-w-2xl mx-auto shadow-xl glassmorphic glassmorphic-dark">
+          <Card className="max-w-2xl mx-auto shadow-xl bg-card border-border"> {/* Removed glassmorphic */}
             <CardHeader>
               <CardTitle className="flex items-center gap-2 font-headline text-primary">
                 <MailIcon className="h-6 w-6" /> Send Me a Message
               </CardTitle>
-              <CardDescription>
+              <CardDescription className="text-muted-foreground">
                 Have a project in mind, a question, or just want to say hi? Fill out the form below.
               </CardDescription>
             </CardHeader>
@@ -99,25 +95,27 @@ const ConnectSection = () => {
               <CardContent className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="name">Full Name</Label>
+                    <Label htmlFor="name" className="text-foreground/80">Full Name</Label>
                     <Input 
                       id="name" 
                       name="name"
                       placeholder="Your Name" 
                       required 
+                      className="bg-input text-foreground placeholder:text-muted-foreground focus:ring-accent"
                     />
                     {formState.errors?.name && (
                       <p className="text-xs text-destructive">{formState.errors.name.join(', ')}</p>
                     )}
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email Address</Label>
+                    <Label htmlFor="email" className="text-foreground/80">Email Address</Label>
                     <Input 
                       id="email" 
                       name="email"
                       type="email" 
                       placeholder="your@email.com" 
                       required 
+                      className="bg-input text-foreground placeholder:text-muted-foreground focus:ring-accent"
                     />
                      {formState.errors?.email && (
                       <p className="text-xs text-destructive">{formState.errors.email.join(', ')}</p>
@@ -125,25 +123,27 @@ const ConnectSection = () => {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="subject">Subject</Label>
+                  <Label htmlFor="subject" className="text-foreground/80">Subject</Label>
                   <Input 
                     id="subject" 
                     name="subject"
                     placeholder="What's this about?" 
                     required 
+                    className="bg-input text-foreground placeholder:text-muted-foreground focus:ring-accent"
                   />
                   {formState.errors?.subject && (
                     <p className="text-xs text-destructive">{formState.errors.subject.join(', ')}</p>
                   )}
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
+                  <Label htmlFor="message" className="text-foreground/80">Message</Label>
                   <Textarea
                     id="message"
                     name="message"
                     placeholder="Your message..."
                     required
                     rows={5}
+                    className="bg-input text-foreground placeholder:text-muted-foreground focus:ring-accent"
                   />
                   {formState.errors?.message && (
                     <p className="text-xs text-destructive">{formState.errors.message.join(', ')}</p>

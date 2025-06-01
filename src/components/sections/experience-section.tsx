@@ -15,8 +15,8 @@ const ExperienceCard: React.FC<{ item: ExperienceItem, index: number }> = ({ ite
         hidden: index % 2 === 0 ? 'opacity-0 -translate-x-16' : 'opacity-0 translate-x-16'
       }}
     >
-      <Card className="overflow-hidden glassmorphic glassmorphic-dark hover:shadow-primary/20 hover:shadow-lg transition-shadow duration-300">
-        <CardHeader className="flex flex-row items-start gap-4 space-y-0">
+      <Card className="overflow-hidden bg-card border-border hover:border-accent hover:shadow-accent/20 hover:shadow-lg transition-shadow duration-300"> {/* Removed glassmorphic */}
+        <CardHeader className="flex flex-row items-start gap-4 space-y-0 p-6">
           {item.companyLogoUrl && (
              <Image
               src={item.companyLogoUrl}
@@ -27,14 +27,14 @@ const ExperienceCard: React.FC<{ item: ExperienceItem, index: number }> = ({ ite
               data-ai-hint={item.companyLogoAiHint}
             />
           )}
-          {!item.companyLogoUrl && Icon && <Icon className="h-12 w-12 text-primary mt-1"/>}
+          {!item.companyLogoUrl && Icon && <Icon className="h-12 w-12 text-accent mt-1"/>} {/* Accent for icon */}
           <div className="flex-grow">
             <CardTitle className="font-headline text-xl text-primary">{item.role}</CardTitle>
             <CardDescription className="text-md font-medium text-foreground">{item.company}</CardDescription>
             <p className="text-xs text-muted-foreground">{item.duration}</p>
           </div>
         </CardHeader>
-        <CardContent>
+        <CardContent className="p-6 pt-0">
           <ul className="space-y-2 text-sm text-muted-foreground">
             {item.responsibilities.map((resp, i) => (
               <li key={i} className="flex items-start">

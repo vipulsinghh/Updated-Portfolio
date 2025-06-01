@@ -7,85 +7,78 @@ html {
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', 'Space Grotesk', sans-serif;
 }
 
 @layer base {
   :root {
-    --background: 216 20% 95%; /* Light Gray #F0F2F5 */
-    --foreground: 224 71.4% 4.1%; /* Dark Blue/Black for text */
+    --background: 220 17% 7%; /* Very Dark Blue/Black */
+    --foreground: 210 20% 98%; /* Almost White */
 
-    --card: 0 0% 100%; /* White base for cards */
-    --card-foreground: 224 71.4% 4.1%;
+    --card: 220 15% 12%; /* Slightly Lighter Dark for Cards */
+    --card-foreground: 210 15% 90%; /* Light Grey for Card Text */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 224 71.4% 4.1%;
-
-    --primary: 231 53% 48%; /* Deep Blue #3F51B5 */
-    --primary-foreground: 0 0% 100%; /* White */
-
-    --secondary: 220 14.3% 95.9%; /* Light Gray */
-    --secondary-foreground: 220 8.9% 46.1%; /* Darker Gray */
-
-    --muted: 220 14.3% 95.9%;
-    --muted-foreground: 220 8.9% 46.1%;
-
-    --accent: 260 46% 63%; /* Soft Purple #9575CD */
-    --accent-foreground: 0 0% 100%; /* White */
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 220 13% 85%; /* Slightly darker border for visibility on light gray */
-    --input: 220 13% 91%;
-    --ring: 231 53% 48%; /* Primary color for rings */
-
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    /* Keeping dark theme defaults, can be adjusted if dark mode is a specific requirement */
-    --background: 224 71.4% 4.1%;
-    --foreground: 210 20% 98%;
-
-    --card: 224 71.4% 4.1%;
-    --card-foreground: 210 20% 98%;
-
-    --popover: 224 71.4% 4.1%;
+    --popover: 220 17% 7%;
     --popover-foreground: 210 20% 98%;
 
-    --primary: 210 20% 98%;
-    --primary-foreground: 220.9 39.3% 11%;
+    --primary: 210 20% 92%; /* Light Grey for Primary Text/Elements */
+    --primary-foreground: 220 17% 7%; /* Dark for Text on Primary Buttons */
 
-    --secondary: 215 27.9% 16.9%;
-    --secondary-foreground: 210 20% 98%;
+    --secondary: 220 15% 20%; /* Dark Grey for Secondary Elements */
+    --secondary-foreground: 210 15% 85%; /* Light Grey Text on Secondary */
 
-    --muted: 215 27.9% 16.9%;
-    --muted-foreground: 217.9 10.6% 64.9%;
+    --muted: 220 15% 15%; /* Very Dark Grey for Muted Backgrounds */
+    --muted-foreground: 210 10% 60%; /* Medium Grey for Muted Text */
 
-    --accent: 215 27.9% 16.9%;
-    --accent-foreground: 210 20% 98%;
-    
-    --destructive: 0 62.8% 30.6%;
+    --accent: 300 80% 60%; /* Vibrant Purple/Magenta as an accent */
+    --accent-foreground: 210 20% 98%; /* White text on accent */
+
+    --destructive: 0 62.8% 30.6%; /* Kept from previous dark theme */
     --destructive-foreground: 0 0% 98%;
 
-    --border: 215 27.9% 16.9%;
-    --input: 215 27.9% 16.9%;
-    --ring: 210 20% 98%;
+    --border: 220 15% 25%; /* Dark Border */
+    --input: 220 15% 18%; /* Dark Input Background */
+    --ring: 300 80% 70%; /* Lighter Purple for Focus Rings */
+
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --radius: 0.5rem;
+
+    /* Sidebar variables, assuming dark theme is default */
+    --sidebar-background: 220 15% 10%;
+    --sidebar-foreground: 210 15% 85%;
+    --sidebar-primary: 210 20% 92%;
+    --sidebar-primary-foreground: 220 17% 7%;
+    --sidebar-accent: 220 15% 20%;
+    --sidebar-accent-foreground: 210 15% 85%;
+    --sidebar-border: 220 15% 25%;
+    --sidebar-ring: 300 80% 70%;
+  }
+
+  /* Apply dark theme variables directly as it's the primary theme now */
+  .dark {
+    --background: 220 17% 7%;
+    --foreground: 210 20% 98%;
+    --card: 220 15% 12%;
+    --card-foreground: 210 15% 90%;
+    --popover: 220 17% 7%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 210 20% 92%;
+    --primary-foreground: 220 17% 7%;
+    --secondary: 220 15% 20%;
+    --secondary-foreground: 210 15% 85%;
+    --muted: 220 15% 15%;
+    --muted-foreground: 210 10% 60%;
+    --accent: 300 80% 60%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 15% 25%;
+    --input: 220 15% 18%;
+    --ring: 300 80% 70%;
     
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
@@ -93,14 +86,14 @@ body {
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
 
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 220 15% 10%;
+    --sidebar-foreground: 210 15% 85%;
+    --sidebar-primary: 210 20% 92%;
+    --sidebar-primary-foreground: 220 17% 7%;
+    --sidebar-accent: 220 15% 20%;
+    --sidebar-accent-foreground: 210 15% 85%;
+    --sidebar-border: 220 15% 25%;
+    --sidebar-ring: 300 80% 70%;
   }
 }
 
@@ -110,15 +103,20 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+    /* Ensure dark theme is default if no toggle exists */
+    /* If there's a toggle, it would add/remove .dark from html/body */
   }
 }
 
 .glassmorphic {
-  @apply bg-white/20 backdrop-filter backdrop-blur-lg border border-white/30 shadow-xl;
+  /* Adjusted for dark theme, more subtle */
+  @apply bg-white/5 backdrop-filter backdrop-blur-md border border-white/10 shadow-xl;
 }
 .glassmorphic-dark {
-  @apply dark:bg-slate-800/20 dark:backdrop-filter dark:backdrop-blur-lg dark:border dark:border-slate-700/30 dark:shadow-xl;
+   /* This class becomes redundant if dark is the only theme, or can be refined */
+  @apply bg-slate-900/10 backdrop-filter backdrop-blur-md border border-slate-700/20 shadow-xl;
 }
+
 
 /* For 3D card flip */
 .perspective {
