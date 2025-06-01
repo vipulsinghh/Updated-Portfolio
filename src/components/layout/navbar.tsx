@@ -1,7 +1,7 @@
 
 "use client";
 import Link from "next/link";
-import { MenuIcon, XIcon, SparklesIcon } from "lucide-react"; // Changed UserCircle to SparklesIcon
+import { MenuIcon, XIcon } from "lucide-react"; // Removed SparklesIcon
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
@@ -33,12 +33,11 @@ const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-border/50">
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
-        <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-          <SparklesIcon className="h-8 w-8 text-accent" /> {/* Using Accent color for logo icon */}
-          <span className="text-xl font-bold font-headline text-foreground"> {/* Changed to foreground for better contrast */}
-            Vipul Kumar Singh
-          </span>
-        </Link>
+        <div className="flex items-center gap-2">
+          {/* Empty div or Link for spacing if needed, or just remove entirely if nav should shift left */}
+          {/* For now, an empty div to maintain structure if other elements rely on this space */}
+          <div className="w-auto h-8"></div> {/* Placeholder to maintain layout balance, adjust if needed */}
+        </div>
 
         <nav className="hidden md:flex items-center space-x-1">
           {renderNavLinks()}
@@ -54,10 +53,8 @@ const Navbar = () => {
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-background p-6 border-l border-border/50">
               <div className="flex justify-between items-center mb-6">
-                 <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-                    <SparklesIcon className="h-8 w-8 text-accent" />
-                    <span className="text-xl font-bold font-headline text-foreground">VKS</span>
-                  </Link>
+                 {/* Empty div or Link for spacing */}
+                 <div className="w-auto h-8"></div>
                 <SheetClose asChild>
                    <Button variant="ghost" size="icon">
                     <XIcon className="h-6 w-6 text-accent" /> {/* Using Accent for close icon */}
