@@ -1,13 +1,12 @@
 
 'use client';
 import dynamic from 'next/dynamic';
-import Link from "next/link"; // Added Link for navigation
-import { Button } from "@/components/ui/button"; // Using ShadCN Button
-import TypingAnimation from "@/components/ui/typing-animation"; // Re-adding TypingAnimation
-import { ArrowRightIcon, BriefcaseIcon } from "lucide-react"; // Icons for buttons
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import TypingAnimation from "@/components/ui/typing-animation";
+import { ArrowRightIcon, BriefcaseIcon } from "lucide-react";
 
-// Dynamically import the 3D Cube with SSR disabled
-const CubeGrid = dynamic(() => import('@/components/CubeGrid'), { 
+const CubeGrid = dynamic(() => import('@/components/CubeGrid'), {
   ssr: false,
   loading: () => <div style={{ height: "300px", width: "300px", display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p className="text-muted-foreground">Loading 3D Grid...</p></div>,
 });
@@ -38,9 +37,9 @@ export default function HeroSection() {
               Crafting innovative software solutions with a focus on AI automation and modern web technologies. Let&apos;s build something amazing together.
             </p>
             <div className="flex flex-col sm:flex-row justify-center md:justify-start items-center gap-4">
-              <Button 
-                size="lg" 
-                asChild 
+              <Button
+                size="lg"
+                asChild
                 className="bg-primary text-primary-foreground hover:bg-primary/90 animate-hero-pulse px-8 py-3"
               >
                 <Link href="#projects">
@@ -48,10 +47,10 @@ export default function HeroSection() {
                   View My Work
                 </Link>
               </Button>
-              <Button 
-                variant="link" 
-                size="lg" 
-                asChild 
+              <Button
+                variant="link"
+                size="lg"
+                asChild
                 className="text-muted-foreground hover:text-primary px-8 py-3"
               >
                 <Link href="#connect">
@@ -62,10 +61,9 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Right side: 3D Cube */}
+          {/* Right side: 3D Cube Grid */}
           <div className="w-full h-[300px] md:h-[400px] flex justify-center items-center">
-            {/* Conditionally render CubeGrid only on the client */}
-            {typeof window !== 'undefined' && <CubeGrid />}
+            <CubeGrid />
           </div>
         </div>
       </div>
