@@ -1,6 +1,7 @@
+
 "use client";
 import Link from "next/link";
-import { MenuIcon, XIcon, UserCircle } from "lucide-react";
+import { MenuIcon, XIcon, SparklesIcon } from "lucide-react"; // Changed UserCircle to SparklesIcon
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
@@ -17,7 +18,7 @@ const Navbar = () => {
         variant="ghost"
         asChild
         className={cn(
-          "font-medium text-foreground/80 hover:text-primary", // Adjusted text color for dark theme
+          "font-medium text-foreground/80 hover:text-accent", // Use accent for hover
           isMobile ? "w-full justify-start text-lg py-4" : "text-sm"
         )}
         onClick={() => isMobile && setIsMobileMenuOpen(false)}
@@ -30,13 +31,11 @@ const Navbar = () => {
     ));
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-border/50"> {/* Adjusted for dark theme */}
+    <header className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-border/50">
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-          {/* You can replace UserCircle with a custom logo if you have one */}
-          {/* <Image src="/logo-dark.png" alt="Logo" width={32} height={32} /> */}
-          <UserCircle className="h-8 w-8 text-primary" />
-          <span className="text-xl font-bold font-headline text-primary">
+          <SparklesIcon className="h-8 w-8 text-accent" /> {/* Using Accent color for logo icon */}
+          <span className="text-xl font-bold font-headline text-foreground"> {/* Changed to foreground for better contrast */}
             Vipul Kumar Singh
           </span>
         </Link>
@@ -49,19 +48,19 @@ const Navbar = () => {
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
-                <MenuIcon className="h-6 w-6 text-primary" />
+                <MenuIcon className="h-6 w-6 text-accent" /> {/* Using Accent for menu icon */}
                 <span className="sr-only">Open menu</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-background p-6 border-l border-border/50">
               <div className="flex justify-between items-center mb-6">
                  <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-                    <UserCircle className="h-8 w-8 text-primary" />
-                    <span className="text-xl font-bold font-headline text-primary">VKS</span>
+                    <SparklesIcon className="h-8 w-8 text-accent" />
+                    <span className="text-xl font-bold font-headline text-foreground">VKS</span>
                   </Link>
                 <SheetClose asChild>
                    <Button variant="ghost" size="icon">
-                    <XIcon className="h-6 w-6 text-primary" />
+                    <XIcon className="h-6 w-6 text-accent" /> {/* Using Accent for close icon */}
                     <span className="sr-only">Close menu</span>
                   </Button>
                 </SheetClose>

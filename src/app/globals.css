@@ -13,88 +13,87 @@ body {
 
 @layer base {
   :root {
-    --background: 220 17% 7%; /* Very Dark Blue/Black */
-    --foreground: 210 20% 98%; /* Almost White */
+    /* Dark Green Theme based on provided image */
+    --background: 150 30% 6%; /* Very Dark Desaturated Green */
+    --foreground: 150 15% 95%; /* Almost White / Very Light Greenish-White */
 
-    --card: 220 15% 12%; /* Slightly Lighter Dark for Cards */
-    --card-foreground: 210 15% 90%; /* Light Grey for Card Text */
+    --card: 150 25% 10%; /* Slightly Lighter Dark Green for Cards */
+    --card-foreground: 150 15% 90%; /* Light Grey/Green for Card Text */
 
-    --popover: 220 17% 7%;
-    --popover-foreground: 210 20% 98%;
+    --popover: 150 30% 6%;
+    --popover-foreground: 150 15% 95%;
 
-    --primary: 210 20% 92%; /* Light Grey for Primary Text/Elements */
-    --primary-foreground: 220 17% 7%; /* Dark for Text on Primary Buttons */
+    --primary: 130 60% 50%; /* Bright Green Accent */
+    --primary-foreground: 150 30% 8%; /* Dark Green for Text on Primary Buttons */
 
-    --secondary: 220 15% 20%; /* Dark Grey for Secondary Elements */
-    --secondary-foreground: 210 15% 85%; /* Light Grey Text on Secondary */
+    --secondary: 150 20% 15%; /* Darker Green for Secondary Elements */
+    --secondary-foreground: 150 10% 80%; /* Light Greenish Grey Text on Secondary */
 
-    --muted: 220 15% 15%; /* Very Dark Grey for Muted Backgrounds */
-    --muted-foreground: 210 10% 60%; /* Medium Grey for Muted Text */
+    --muted: 150 20% 12%; /* Very Dark Green for Muted Backgrounds */
+    --muted-foreground: 150 10% 55%; /* Medium Dark Green for Muted Text */
 
-    --accent: 262 47% 63%; /* Soft Purple (#9575CD) */
-    --accent-foreground: 210 20% 98%; /* White text on accent */
+    --accent: 130 70% 55%; /* Bright Vibrant Green */
+    --accent-foreground: 150 15% 95%; /* White/Light text on accent */
 
-    --destructive: 0 62.8% 30.6%; /* Kept from previous dark theme */
+    --destructive: 0 62.8% 30.6%; 
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 15% 25%; /* Dark Border */
-    --input: 220 15% 18%; /* Dark Input Background */
-    --ring: 262 47% 73%; /* Lighter Soft Purple for Focus Rings */
+    --border: 150 20% 20%; /* Dark Green Border */
+    --input: 150 20% 14%; /* Dark Green Input Background */
+    --ring: 130 70% 65%; /* Lighter Bright Green for Focus Rings */
 
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --chart-1: 130 60% 50%;
+    --chart-2: 140 50% 45%;
+    --chart-3: 120 70% 40%;
+    --chart-4: 150 55% 50%;
+    --chart-5: 110 65% 45%;
     --radius: 0.5rem;
 
-    /* Sidebar variables, assuming dark theme is default */
-    --sidebar-background: 220 15% 10%;
-    --sidebar-foreground: 210 15% 85%;
-    --sidebar-primary: 210 20% 92%;
-    --sidebar-primary-foreground: 220 17% 7%;
-    --sidebar-accent: 220 15% 20%;
-    --sidebar-accent-foreground: 210 15% 85%;
-    --sidebar-border: 220 15% 25%;
-    --sidebar-ring: 262 47% 73%; /* Lighter Soft Purple for Focus Rings */
+    --sidebar-background: 150 25% 8%;
+    --sidebar-foreground: 150 10% 80%;
+    --sidebar-primary: 130 60% 50%;
+    --sidebar-primary-foreground: 150 30% 8%;
+    --sidebar-accent: 150 20% 15%;
+    --sidebar-accent-foreground: 150 10% 80%;
+    --sidebar-border: 150 20% 20%;
+    --sidebar-ring: 130 70% 65%; 
   }
 
-  /* Apply dark theme variables directly as it's the primary theme now */
   .dark {
-    --background: 220 17% 7%;
-    --foreground: 210 20% 98%;
-    --card: 220 15% 12%;
-    --card-foreground: 210 15% 90%;
-    --popover: 220 17% 7%;
-    --popover-foreground: 210 20% 98%;
-    --primary: 210 20% 92%;
-    --primary-foreground: 220 17% 7%;
-    --secondary: 220 15% 20%;
-    --secondary-foreground: 210 15% 85%;
-    --muted: 220 15% 15%;
-    --muted-foreground: 210 10% 60%;
-    --accent: 262 47% 63%; /* Soft Purple (#9575CD) */
-    --accent-foreground: 210 20% 98%;
+    --background: 150 30% 6%; 
+    --foreground: 150 15% 95%; 
+    --card: 150 25% 10%; 
+    --card-foreground: 150 15% 90%; 
+    --popover: 150 30% 6%;
+    --popover-foreground: 150 15% 95%;
+    --primary: 130 60% 50%; 
+    --primary-foreground: 150 30% 8%; 
+    --secondary: 150 20% 15%; 
+    --secondary-foreground: 150 10% 80%; 
+    --muted: 150 20% 12%; 
+    --muted-foreground: 150 10% 55%; 
+    --accent: 130 70% 55%; 
+    --accent-foreground: 150 15% 95%; 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 220 15% 25%;
-    --input: 220 15% 18%;
-    --ring: 262 47% 73%; /* Lighter Soft Purple for Focus Rings */
+    --border: 150 20% 20%; 
+    --input: 150 20% 14%; 
+    --ring: 130 70% 65%; 
     
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --chart-1: 130 60% 50%;
+    --chart-2: 140 50% 45%;
+    --chart-3: 120 70% 40%;
+    --chart-4: 150 55% 50%;
+    --chart-5: 110 65% 45%;
 
-    --sidebar-background: 220 15% 10%;
-    --sidebar-foreground: 210 15% 85%;
-    --sidebar-primary: 210 20% 92%;
-    --sidebar-primary-foreground: 220 17% 7%;
-    --sidebar-accent: 220 15% 20%;
-    --sidebar-accent-foreground: 210 15% 85%;
-    --sidebar-border: 220 15% 25%;
-    --sidebar-ring: 262 47% 73%; /* Lighter Soft Purple for Focus Rings */
+    --sidebar-background: 150 25% 8%;
+    --sidebar-foreground: 150 10% 80%;
+    --sidebar-primary: 130 60% 50%;
+    --sidebar-primary-foreground: 150 30% 8%;
+    --sidebar-accent: 150 20% 15%;
+    --sidebar-accent-foreground: 150 10% 80%;
+    --sidebar-border: 150 20% 20%;
+    --sidebar-ring: 130 70% 65%;
   }
 }
 
@@ -111,7 +110,8 @@ body {
   @apply bg-white/5 backdrop-filter backdrop-blur-md border border-white/10 shadow-xl;
 }
 .glassmorphic-dark {
-  @apply bg-slate-900/10 backdrop-filter backdrop-blur-md border border-slate-700/20 shadow-xl;
+  /* Updated for new dark green theme */
+  @apply bg-black/20 backdrop-filter backdrop-blur-md border-[hsl(var(--border))]/50 shadow-xl;
 }
 
 .perspective {
@@ -150,7 +150,8 @@ body {
   inset: -2px; 
   border-radius: inherit; 
   padding: 2px; 
-  background: conic-gradient(from var(--gradient-angle), #8A2BE2, #FF69B4, #FFA500, #ADFF2F, #20B2AA, #8A2BE2);
+  /* Updated gradient to match bright green theme */
+  background: conic-gradient(from var(--gradient-angle), hsl(var(--accent)), #34D399, #A7F3D0, #FBBF24, #34D399, hsl(var(--accent)));
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);

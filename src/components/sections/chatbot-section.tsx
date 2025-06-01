@@ -90,7 +90,7 @@ const ChatbotSection = () => {
   }, []);
 
   return (
-    <section id="ai-assistant" className="py-16 md:py-24 bg-secondary/50"> {/* Adjusted background */}
+    <section id="ai-assistant" className="py-16 md:py-24 bg-card"> 
       <div className="container mx-auto px-4">
         <AnimatedDiv
           animationClasses={{
@@ -98,13 +98,13 @@ const ChatbotSection = () => {
             hidden: 'opacity-0 scale-90'
           }}
         >
-          <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12 text-primary">
+          <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12 text-foreground">
             AI Assistant
           </h2>
-          <Card className="max-w-2xl mx-auto shadow-xl bg-card border-border"> {/* Removed glassmorphic */}
+          <Card className="max-w-2xl mx-auto shadow-xl bg-background border-border rounded-xl gradient-border-hover-effect"> 
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 font-headline text-primary">
-                <BotIcon className="h-6 w-6" /> Ask Me Anything
+              <CardTitle className="flex items-center gap-2 font-headline text-foreground">
+                <BotIcon className="h-6 w-6 text-accent" /> Ask Me Anything
               </CardTitle>
               <CardDescription className="text-muted-foreground">
                 Have questions about Vipul? Get instant answers from this AI assistant.
@@ -128,20 +128,20 @@ const ChatbotSection = () => {
                         className={cn(
                           "max-w-[75%] rounded-lg p-3 text-sm shadow",
                           message.sender === 'user'
-                            ? 'bg-accent text-accent-foreground' // User messages with accent color
+                            ? 'bg-accent text-primary-foreground' // User messages with accent bg and dark text
                             : 'bg-muted text-muted-foreground'
                         )}
                       >
                         <p style={{ whiteSpace: 'pre-wrap' }}>{message.text}</p>
                         <p className={cn(
                             "text-xs mt-1",
-                            message.sender === 'user' ? 'text-accent-foreground/70 text-right' : 'text-muted-foreground/70 text-left'
+                            message.sender === 'user' ? 'text-primary-foreground/70 text-right' : 'text-muted-foreground/70 text-left'
                           )}>
                           {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                         </p>
                       </div>
                        {message.sender === 'user' && (
-                        <UserIcon className="h-6 w-6 text-primary flex-shrink-0 mb-1" />
+                        <UserIcon className="h-6 w-6 text-foreground flex-shrink-0 mb-1" />
                       )}
                     </div>
                   ))}
@@ -166,7 +166,7 @@ const ChatbotSection = () => {
                   disabled={isLoading}
                   className="flex-1 bg-input text-foreground placeholder:text-muted-foreground focus:ring-accent"
                 />
-                <Button type="submit" disabled={isLoading || !userInput.trim()} size="icon" className="bg-accent text-accent-foreground hover:bg-accent/90">
+                <Button type="submit" disabled={isLoading || !userInput.trim()} size="icon" className="bg-accent text-background hover:bg-accent/90">
                   {isLoading ? (
                     <Loader2Icon className="h-5 w-5 animate-spin" />
                   ) : (

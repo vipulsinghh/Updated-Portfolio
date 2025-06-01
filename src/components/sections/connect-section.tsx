@@ -22,7 +22,7 @@ const initialState: SendEmailFormState = {
 function SubmitButton() {
   const { pending } = require('react-dom').useFormStatus(); 
   return (
-    <Button type="submit" disabled={pending} className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90">
+    <Button type="submit" disabled={pending} className="w-full sm:w-auto bg-accent text-background hover:bg-accent/90 font-semibold">
       {pending ? (
         <>
           <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />
@@ -49,7 +49,7 @@ const ConnectSection = () => {
         toast({
           title: "Message Sent!",
           description: formState.message,
-          variant: "default", // Will use new theme
+          variant: "default", 
         });
         formRef.current?.reset();
       } else {
@@ -63,7 +63,7 @@ const ConnectSection = () => {
         toast({
           title: "Error Sending Message",
           description: description || "An unknown error occurred.",
-          variant: "destructive", // Will use new theme
+          variant: "destructive",
         });
       }
     }
@@ -79,13 +79,13 @@ const ConnectSection = () => {
             hidden: 'opacity-0 scale-90'
           }}
         >
-          <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12 text-primary">
+          <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12 text-foreground">
             Let&apos;s Connect
           </h2>
-          <Card className="max-w-2xl mx-auto shadow-xl bg-card border-border"> {/* Removed glassmorphic */}
+          <Card className="max-w-2xl mx-auto shadow-xl bg-card border-border rounded-xl gradient-border-hover-effect"> 
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 font-headline text-primary">
-                <MailIcon className="h-6 w-6" /> Send Me a Message
+              <CardTitle className="flex items-center gap-2 font-headline text-foreground">
+                <MailIcon className="h-6 w-6 text-accent" /> Send Me a Message
               </CardTitle>
               <CardDescription className="text-muted-foreground">
                 Have a project in mind, a question, or just want to say hi? Fill out the form below.

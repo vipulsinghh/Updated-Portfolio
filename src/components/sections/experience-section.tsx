@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import { experienceData, type ExperienceItem } from "@/lib/data";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -15,7 +16,7 @@ const ExperienceCard: React.FC<{ item: ExperienceItem, index: number }> = ({ ite
         hidden: index % 2 === 0 ? 'opacity-0 -translate-x-16' : 'opacity-0 translate-x-16'
       }}
     >
-      <Card className="overflow-hidden bg-card border-border hover:border-accent hover:shadow-accent/20 hover:shadow-lg transition-shadow duration-300"> {/* Removed glassmorphic */}
+      <Card className="overflow-hidden bg-card border-border hover:border-accent/70 hover:shadow-accent/20 hover:shadow-lg transition-shadow duration-300 gradient-border-hover-effect rounded-xl"> 
         <CardHeader className="flex flex-row items-start gap-4 space-y-0 p-6">
           {item.companyLogoUrl && (
              <Image
@@ -27,10 +28,10 @@ const ExperienceCard: React.FC<{ item: ExperienceItem, index: number }> = ({ ite
               data-ai-hint={item.companyLogoAiHint}
             />
           )}
-          {!item.companyLogoUrl && Icon && <Icon className="h-12 w-12 text-accent mt-1"/>} {/* Accent for icon */}
+          {!item.companyLogoUrl && Icon && <Icon className="h-12 w-12 text-accent mt-1"/>} 
           <div className="flex-grow">
-            <CardTitle className="font-headline text-xl text-primary">{item.role}</CardTitle>
-            <CardDescription className="text-md font-medium text-foreground">{item.company}</CardDescription>
+            <CardTitle className="font-headline text-xl text-foreground">{item.role}</CardTitle>
+            <CardDescription className="text-md font-medium text-accent">{item.company}</CardDescription>
             <p className="text-xs text-muted-foreground">{item.duration}</p>
           </div>
         </CardHeader>
@@ -53,7 +54,7 @@ const ExperienceSection = () => {
   return (
     <section id="experience" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12 text-primary">
+        <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12 text-foreground">
           Professional Experience
         </h2>
         <div className="max-w-3xl mx-auto">

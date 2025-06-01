@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import { socialLinks } from "@/lib/data";
 import { Button } from "@/components/ui/button";
@@ -15,7 +16,7 @@ const Footer = () => {
           {socialLinks.map((link) => (
             <Button variant="ghost" size="icon" asChild key={link.name}>
               <Link href={link.url} target="_blank" rel="noopener noreferrer">
-                <link.icon className="h-5 w-5 text-muted-foreground hover:text-primary" />
+                <link.icon className="h-5 w-5 text-muted-foreground hover:text-accent" />
                 <span className="sr-only">{link.name}</span>
               </Link>
             </Button>

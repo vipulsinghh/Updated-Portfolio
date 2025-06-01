@@ -4,8 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import TypingAnimation from "@/components/ui/typing-animation";
-import { ArrowRightIcon, BriefcaseIcon } from "lucide-react";
-// No longer importing 3D components
+import { ArrowRightIcon, BriefcaseIcon, HandIcon } from "lucide-react";
 
 export default function HeroSection() {
   const textsToType = [
@@ -18,13 +17,17 @@ export default function HeroSection() {
   return (
     <section id="hero" className="relative min-h-[calc(100vh-5rem)] flex items-center py-16 md:py-24 bg-background text-foreground">
       <div className="absolute inset-0 opacity-[0.03] overflow-hidden">
-        {/* Optional: Add a subtle background pattern or texture here if desired later */}
+        {/* Future: Add subtle background patterns like faint stars or grid lines if desired */}
       </div>
       <div className="container mx-auto px-4 z-10">
         <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
           {/* Left side: Text */}
           <div className="md:text-left text-center">
-            <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl font-bold text-primary mb-6 leading-tight">
+            <div className="inline-flex items-center gap-2 bg-card text-sm text-accent px-3 py-1.5 rounded-full mb-4 border border-accent/30 shadow-sm">
+              <HandIcon className="h-4 w-4" />
+              <span>Hi there! I'm Vipul</span>
+            </div>
+            <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl font-extrabold text-foreground mb-6 leading-tight">
               Vipul Kumar Singh
             </h1>
             <div className="text-xl sm:text-2xl md:text-3xl font-medium text-foreground mb-8 h-10 md:h-16">
@@ -37,7 +40,7 @@ export default function HeroSection() {
               <Button
                 size="lg"
                 asChild
-                className="bg-primary text-primary-foreground hover:bg-primary/90 animate-hero-pulse px-8 py-3"
+                className="bg-accent text-background hover:bg-accent/90 font-semibold animate-hero-pulse px-8 py-3 gradient-border-hover-effect rounded-lg"
               >
                 <Link href="#projects">
                   <BriefcaseIcon className="mr-2 h-5 w-5" />
@@ -45,10 +48,10 @@ export default function HeroSection() {
                 </Link>
               </Button>
               <Button
-                variant="link"
+                variant="outline" 
                 size="lg"
                 asChild
-                className="text-muted-foreground hover:text-primary px-8 py-3"
+                className="text-accent border-accent hover:bg-accent/10 hover:text-accent/90 font-semibold px-8 py-3 rounded-lg"
               >
                 <Link href="#connect">
                   Get In Touch
@@ -60,9 +63,9 @@ export default function HeroSection() {
 
           {/* Right side: Static Image */}
           <div className="w-full flex justify-center items-center md:justify-end">
-            <div className="relative w-[500px] h-[500px] rounded-full overflow-hidden shadow-xl border-4 border-accent">
+            <div className="relative w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px] rounded-full overflow-hidden shadow-xl border-4 border-accent/50 gradient-border-hover-effect">
               <Image
-                src="/images/Portflio Profile Hero Sec.PNG"
+                src="/Profile Hero Sec.PNG"
                 alt="Vipul Kumar Singh - Profile Picture"
                 width={500}
                 height={500}
