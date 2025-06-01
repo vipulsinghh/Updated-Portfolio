@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const resumeFileName = "Vipul_Kumar_Singh_Resume.pdf"; // You can change this if your file is named differently
+  const resumeFileName = "/documents/Vipul_Kumar_Singh_Resume.pdf"; // You can change this if your file is named differently
 
   const renderNavLinks = (isMobile: boolean = false) =>
     navLinks.map((link) => (
@@ -41,7 +41,7 @@ const Navbar = () => {
       )}
       onClick={() => isMobile && setIsMobileMenuOpen(false)}
     >
-      <a href={`/${resumeFileName}`} download>
+      <a href="/documents/Vipul_Kumar_Singh_Resume.pdf" download>
         <FileTextIcon className="mr-2 h-4 w-4" />
         Resume
       </a>
