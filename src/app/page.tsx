@@ -1,7 +1,9 @@
+
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import HeroSection from "@/components/sections/hero-section";
-import ConnectSection from "@/components/sections/connect-section"; // Renamed and new import
+import ChatbotSection from "@/components/sections/chatbot-section"; // New AI Assistant section
+import ConnectSection from "@/components/sections/connect-section"; 
 import EducationSection from "@/components/sections/education-section";
 import SkillsSection from "@/components/sections/skills-section";
 import ProjectsSection from "@/components/sections/projects-section";
@@ -14,6 +16,7 @@ export default function Home() {
       <Navbar />
       <main className="flex-grow">
         <HeroSection />
+        <ChatbotSection /> {/* Added AI Assistant section here */}
         <ConnectSection /> 
         <EducationSection />
         <SkillsSection />
@@ -25,3 +28,5 @@ export default function Home() {
     </div>
   );
 }
+
+    

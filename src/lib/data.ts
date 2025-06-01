@@ -1,4 +1,5 @@
-import { Code2Icon, ServerIcon, BrainCircuitIcon, DatabaseIcon, TerminalIcon, BriefcaseIcon, GraduationCapIcon, UsersIcon, DollarSignIcon, GithubIcon, LinkedinIcon, GlobeIcon, BarChartIcon, LayersIcon, BotIcon, PaletteIcon, MailIcon } from 'lucide-react';
+
+import { Code2Icon, ServerIcon, BrainCircuitIcon, DatabaseIcon, TerminalIcon, BriefcaseIcon, GraduationCapIcon, UsersIcon, DollarSignIcon, GithubIcon, LinkedinIcon, GlobeIcon, BarChartIcon, LayersIcon, BotIcon, PaletteIcon, MailIcon, MessageCircleIcon } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 export interface NavLink {
@@ -9,7 +10,8 @@ export interface NavLink {
 
 export const navLinks: NavLink[] = [
   { href: "#hero", label: "Home" },
-  { href: "#connect", label: "Connect", icon: MailIcon }, // Updated and reordered
+  { href: "#ai-assistant", label: "AI Assistant", icon: BotIcon }, // New AI Assistant link
+  { href: "#connect", label: "Connect", icon: MailIcon },
   { href: "#education", label: "Education" },
   { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
@@ -227,3 +229,5 @@ export const socialLinks = [
   { name: "GitHub", url: "https://github.com/yourusername", icon: GithubIcon },
   { name: "LinkedIn", url: "https://linkedin.com/in/yourusername", icon: LinkedinIcon },
 ];
+
+    

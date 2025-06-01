@@ -1,71 +1,97 @@
+
 "use client";
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, useRef, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
-import { MailIcon, SendIcon, Loader2Icon } from 'lucide-react';
-import { useToast } from "@/hooks/use-toast";
-import AnimatedDiv from '../ui/animated-div';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { BotIcon, Loader2Icon, SendHorizonalIcon, UserIcon } from 'lucide-react';
+import { chatbotAssistant, type ChatbotAssistantInput, type ChatbotAssistantOutput } from '@/ai/flows/chatbot-assistant';
+import AnimatedDiv from '@/components/ui/animated-div';
+import { cn } from '@/lib/utils';
 
-interface FormData {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
+interface ChatMessage {
+  id: string;
+  sender: 'user' | 'ai';
+  text: string;
+  timestamp: Date;
 }
 
-const ConnectSection = () => {
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
+const ChatbotSection = () => {
+  const [userInput, setUserInput] = useState('');
+  const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const { toast } = useToast();
+  const scrollAreaRef = useRef<HTMLDivElement>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+  const scrollToBottom = () => {
+    if (scrollAreaRef.current) {
+      const scrollViewport = scrollAreaRef.current.querySelector('div[data-radix-scroll-area-viewport]');
+      if (scrollViewport) {
+        scrollViewport.scrollTop = scrollViewport.scrollHeight;
+      }
+    }
   };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [chatHistory]);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (isLoading) return;
+    if (!userInput.trim() || isLoading) return;
 
+    const newUserMessage: ChatMessage = {
+      id: `user-${Date.now()}`,
+      sender: 'user',
+      text: userInput,
+      timestamp: new Date(),
+    };
+    setChatHistory((prev) => [...prev, newUserMessage]);
+    setUserInput('');
     setIsLoading(true);
 
-    // Simulate API call / email sending
-    await new Promise(resolve => setTimeout(resolve, 1500));
-
     try {
-      // In a real app, you would send the formData to your backend here
-      console.log("Form data submitted:", formData);
-
-      toast({
-        title: "Message Sent!",
-        description: "Thanks for reaching out. I'll get back to you soon.",
-        variant: "default", 
-      });
-      setFormData({ name: '', email: '', subject: '', message: '' }); // Reset form
+      const input: ChatbotAssistantInput = { question: newUserMessage.text };
+      const response: ChatbotAssistantOutput = await chatbotAssistant(input);
+      
+      const newAiMessage: ChatMessage = {
+        id: `ai-${Date.now()}`,
+        sender: 'ai',
+        text: response.answer,
+        timestamp: new Date(),
+      };
+      setChatHistory((prev) => [...prev, newAiMessage]);
     } catch (error) {
-      console.error("Form submission error:", error);
-      toast({
-        title: "Error Sending Message",
-        description: "Something went wrong. Please try again later.",
-        variant: "destructive",
-      });
+      console.error("Chatbot error:", error);
+      const errorMessage: ChatMessage = {
+        id: `ai-error-${Date.now()}`,
+        sender: 'ai',
+        text: "Sorry, I'm having a little trouble connecting right now. Please try again in a moment.",
+        timestamp: new Date(),
+      };
+      setChatHistory((prev) => [...prev, errorMessage]);
     } finally {
       setIsLoading(false);
     }
   };
 
-  const isFormInvalid = !formData.name || !formData.email || !formData.subject || !formData.message;
+  // Add a default greeting message from the AI if chat is empty
+  useEffect(() => {
+    if (chatHistory.length === 0) {
+      setChatHistory([
+        {
+          id: `ai-greeting-${Date.now()}`,
+          sender: 'ai',
+          text: "Hello! I'm Vipul's AI assistant. Feel free to ask me any questions about Vipul's skills, experience, or services.",
+          timestamp: new Date(),
+        }
+      ]);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Run only once on mount
 
   return (
-    <section id="connect" className="py-16 md:py-24 bg-background">
+    <section id="ai-assistant" className="py-16 md:py-24 bg-secondary">
       <div className="container mx-auto px-4">
         <AnimatedDiv
           animationClasses={{
@@ -74,84 +100,83 @@ const ConnectSection = () => {
           }}
         >
           <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12 text-primary">
-            Let&apos;s Connect
+            AI Assistant
           </h2>
           <Card className="max-w-2xl mx-auto shadow-xl glassmorphic glassmorphic-dark">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 font-headline text-primary">
-                <MailIcon className="h-6 w-6" /> Send Me a Message
+                <BotIcon className="h-6 w-6" /> Ask Me Anything
               </CardTitle>
               <CardDescription>
-                Have a project in mind, a question, or just want to say hi? Fill out the form below.
+                Have questions about Vipul? Get instant answers from this AI assistant.
               </CardDescription>
             </CardHeader>
-            <form onSubmit={handleSubmit}>
-              <CardContent className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Full Name</Label>
-                    <Input 
-                      id="name" 
-                      name="name"
-                      placeholder="Your Name" 
-                      value={formData.name}
-                      onChange={handleChange}
-                      required 
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email Address</Label>
-                    <Input 
-                      id="email" 
-                      name="email"
-                      type="email" 
-                      placeholder="your@email.com" 
-                      value={formData.email}
-                      onChange={handleChange}
-                      required 
-                    />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="subject">Subject</Label>
-                  <Input 
-                    id="subject" 
-                    name="subject"
-                    placeholder="What's this about?" 
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required 
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    placeholder="Your message..."
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={5}
-                  />
-                </div>
-              </CardContent>
-              <CardFooter>
-                <Button type="submit" disabled={isLoading || isFormInvalid} className="w-full sm:w-auto">
-                  {isLoading ? (
-                    <>
-                      <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <SendIcon className="mr-2 h-4 w-4" />
-                      Send Message
-                    </>
+            <CardContent>
+              <ScrollArea className="h-72 w-full pr-4" ref={scrollAreaRef}>
+                <div className="space-y-4">
+                  {chatHistory.map((message) => (
+                    <div
+                      key={message.id}
+                      className={cn(
+                        "flex items-end gap-2",
+                        message.sender === 'user' ? 'justify-end' : 'justify-start'
+                      )}
+                    >
+                      {message.sender === 'ai' && (
+                        <BotIcon className="h-6 w-6 text-primary flex-shrink-0 mb-1" />
+                      )}
+                      <div
+                        className={cn(
+                          "max-w-[75%] rounded-lg p-3 text-sm shadow",
+                          message.sender === 'user'
+                            ? 'bg-primary text-primary-foreground'
+                            : 'bg-muted text-muted-foreground'
+                        )}
+                      >
+                        <p style={{ whiteSpace: 'pre-wrap' }}>{message.text}</p>
+                        <p className={cn(
+                            "text-xs mt-1",
+                            message.sender === 'user' ? 'text-primary-foreground/70 text-right' : 'text-muted-foreground/70 text-left'
+                          )}>
+                          {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                        </p>
+                      </div>
+                       {message.sender === 'user' && (
+                        <UserIcon className="h-6 w-6 text-primary flex-shrink-0 mb-1" />
+                      )}
+                    </div>
+                  ))}
+                  {isLoading && (
+                     <div className="flex items-center gap-2 justify-start">
+                        <BotIcon className="h-6 w-6 text-primary flex-shrink-0 mb-1 animate-pulse" />
+                        <div className="bg-muted text-muted-foreground rounded-lg p-3 text-sm shadow">
+                           <Loader2Icon className="h-4 w-4 animate-spin" />
+                        </div>
+                    </div>
                   )}
+                </div>
+              </ScrollArea>
+            </CardContent>
+            <CardFooter>
+              <form onSubmit={handleSubmit} className="flex w-full items-center space-x-2">
+                <Input
+                  type="text"
+                  placeholder="Type your question here..."
+                  value={userInput}
+                  onChange={(e) => setUserInput(e.target.value)}
+                  disabled={isLoading}
+                  className="flex-1"
+                />
+                <Button type="submit" disabled={isLoading || !userInput.trim()} size="icon">
+                  {isLoading ? (
+                    <Loader2Icon className="h-5 w-5 animate-spin" />
+                  ) : (
+                    <SendHorizonalIcon className="h-5 w-5" />
+                  )}
+                  <span className="sr-only">Send</span>
                 </Button>
-              </CardFooter>
-            </form>
+              </form>
+            </CardFooter>
           </Card>
         </AnimatedDiv>
       </div>
@@ -159,4 +184,6 @@ const ConnectSection = () => {
   );
 };
 
-export default ConnectSection;
+export default ChatbotSection;
+
+    
