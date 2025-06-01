@@ -1,7 +1,7 @@
 
 "use client";
-import { useEffect, useRef } from 'react';
-import { useFormState, useFormStatus } from 'react-dom';
+import { useEffect, useRef, useActionState } from 'react'; // Updated import
+// Removed 'useFormState' from 'react-dom' as it's now imported from 'react' as 'useActionState'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -21,7 +21,10 @@ const initialState: SendEmailFormState = {
 };
 
 function SubmitButton() {
-  const { pending } = useFormStatus();
+  // useFormStatus needs to be imported from 'react-dom'
+  // For React 19+, if you're using it with useActionState from 'react',
+  // you still import useFormStatus from 'react-dom'
+  const { pending } = require('react-dom').useFormStatus(); 
   return (
     <Button type="submit" disabled={pending} className="w-full sm:w-auto">
       {pending ? (
@@ -40,7 +43,7 @@ function SubmitButton() {
 }
 
 const ConnectSection = () => {
-  const [formState, formAction] = useFormState(sendEmailAction, initialState);
+  const [formState, formAction] = useActionState(sendEmailAction, initialState); // Updated hook
   const { toast } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
 
