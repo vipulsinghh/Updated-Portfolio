@@ -1,9 +1,9 @@
 'use client';
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import TypingAnimation from "@/components/ui/typing-animation";
 import { ArrowRightIcon, BriefcaseIcon } from "lucide-react";
-import SafeCube from '@/components/SafeCube'; // Import SafeCube directly
 
 export default function HeroSection() {
   const textsToType = [
@@ -16,6 +16,7 @@ export default function HeroSection() {
   return (
     <section id="hero" className="relative min-h-[calc(100vh-5rem)] flex items-center py-16 md:py-24 bg-background text-foreground">
       <div className="absolute inset-0 opacity-[0.03] overflow-hidden">
+        {/* Optional: Add a subtle background pattern or texture here if desired later */}
       </div>
       <div className="container mx-auto px-4 z-10">
         <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
@@ -55,9 +56,16 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Right side: 3D Cube Grid */}
+          {/* Right side: Static Image */}
           <div className="w-full h-[300px] md:h-[400px] flex justify-center items-center">
-            <SafeCube />
+            <Image
+              src="https://placehold.co/600x400.png"
+              alt="Abstract portfolio visual"
+              width={400}
+              height={400}
+              className="rounded-lg object-cover shadow-xl border border-border"
+              data-ai-hint="abstract geometric"
+            />
           </div>
         </div>
       </div>

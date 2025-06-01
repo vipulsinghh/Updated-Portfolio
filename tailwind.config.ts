@@ -97,18 +97,13 @@ export default {
         },
         'hero-pulse': {
           '0%, 100%': { opacity: '1', transform: 'scale(1)' },
-          '50%': { opacity: '0.9', transform: 'scale(1.03)' }, // Adjusted for dark theme
-        },
-        'spin-slow': { // For potential CSS 3D cube
-          'from': { transform: 'rotateX(0deg) rotateY(0deg)' },
-          'to': { transform: 'rotateX(360deg) rotateY(360deg)' },
+          '50%': { opacity: '0.9', transform: 'scale(1.03)' },
         },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'hero-pulse': 'hero-pulse 2.5s infinite ease-in-out',
-        'spin-slow': 'spin-slow 20s linear infinite', // For potential CSS 3D cube
       },
     },
   },
