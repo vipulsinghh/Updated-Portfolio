@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Canvas, useFrame } from '@react-three/fiber';
@@ -26,6 +27,8 @@ function CubeGroup() {
 
   const positions: [number, number, number][] = [];
   // Create a 3x3 grid of cubes, centered at (0,0,0) in the XY plane
+  // User's example: for (let x = -1; x <= 1; x++) { for (let y = -1; y <= 1; y++) { positions.push([x, y, 0]); } }
+  // This creates a 3x3 grid. For a more centered appearance from previous versions:
   const gridSize = 3; 
   const spacing = 1; 
   const offset = (gridSize - 1) * spacing / 2;
@@ -54,3 +57,4 @@ export default function CubeGridClientOnly() {
     </Canvas>
   );
 }
+
