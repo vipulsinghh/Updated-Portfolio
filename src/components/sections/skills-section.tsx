@@ -62,15 +62,15 @@ const SkillsSection = () => {
           </h3>
           <div className="max-w-3xl mx-auto p-4 border border-border rounded-lg shadow-md bg-background gradient-border-hover-effect">
             <Image
-              src="https://ghchart.rshah.org/13A3A4/yourusername" // Using a service that allows color customization
-              alt="GitHub Contributions Calendar"
-              width={828} // Standard GitHub chart width
-              height={128} // Standard GitHub chart height
+              src="https://ghchart.rshah.org/57DD3C/vipulsinghh" 
+              alt="GitHub Contributions Calendar for vipulsinghh"
+              width={828} 
+              height={128} 
               className="rounded-md w-full h-auto"
               data-ai-hint="github contributions calendar"
-              unoptimized // Important for external URLs not in next.config.js images domain
+              unoptimized 
             />
-            <p className="text-sm text-muted-foreground mt-2">Replace 'yourusername' with your actual GitHub username in the URL above, or configure a more dynamic solution.</p>
+            <p className="text-sm text-muted-foreground mt-2">A snapshot of my coding activity on GitHub.</p>
           </div>
         </AnimatedDiv>
       </div>
