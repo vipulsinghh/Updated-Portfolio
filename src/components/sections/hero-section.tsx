@@ -1,16 +1,9 @@
-
 'use client';
-import dynamic from 'next/dynamic';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import TypingAnimation from "@/components/ui/typing-animation";
 import { ArrowRightIcon, BriefcaseIcon } from "lucide-react";
-
-// Dynamically import the 3D Cube with SSR disabled
-const CubeGrid = dynamic(() => import('@/components/CubeGridClientOnly'), {
-  ssr: false,
-  loading: () => <div style={{ height: "300px", width: "300px", display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p className="text-muted-foreground">Loading 3D Grid...</p></div>,
-});
+import SafeCube from '@/components/SafeCube'; // Import SafeCube directly
 
 export default function HeroSection() {
   const textsToType = [
@@ -64,11 +57,10 @@ export default function HeroSection() {
 
           {/* Right side: 3D Cube Grid */}
           <div className="w-full h-[300px] md:h-[400px] flex justify-center items-center">
-            <CubeGrid />
+            <SafeCube />
           </div>
         </div>
       </div>
     </section>
   );
 }
-

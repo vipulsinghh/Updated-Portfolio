@@ -1,17 +1,13 @@
-// This file is no longer used and can be deleted.
-// The logic has been moved to CubeCanvas.tsx and loaded via SafeCube.tsx
-// to prevent "ReactCurrentOwner" errors with @react-three/fiber and Next.js App Router SSR.
 'use client';
 
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Mesh } from 'three'; 
-import React, { useRef } from 'react';
+import { useRef } from 'react';
+import type { Mesh } from 'three'; // Use import type for Three.js types
 
 function Cube({ position }: { position: [number, number, number] }) {
-  const meshRef = useRef<Mesh>(null!);
-
+  const ref = useRef<Mesh>(null!);
   return (
-    <mesh ref={meshRef} position={position}>
+    <mesh ref={ref} position={position}>
       <boxGeometry args={[0.9, 0.9, 0.9]} />
       <meshStandardMaterial color="#111" roughness={0.2} metalness={1} />
     </mesh>
@@ -19,7 +15,7 @@ function Cube({ position }: { position: [number, number, number] }) {
 }
 
 function CubeGroup() {
-  const groupRef = useRef<any>(null); 
+  const groupRef = useRef<any>(null); // Using any as per user's example
   useFrame(() => {
     if (groupRef.current) {
       groupRef.current.rotation.x += 0.005;
@@ -37,9 +33,9 @@ function CubeGroup() {
         positions.push([i * spacing - offset, j * spacing - offset, 0]);
     }
   }
-
+  
   return (
-    <group ref={groupRef} scale={0.75}> 
+    <group ref={groupRef} scale={0.75}>
       {positions.map((pos, idx) => (
         <Cube key={idx} position={pos} />
       ))}
@@ -47,13 +43,12 @@ function CubeGroup() {
   );
 }
 
-export default function CubeGridClientOnly() {
+export default function CubeCanvas() {
   return (
-    <Canvas style={{ height: 300, width: 300 }} camera={{ position: [0, 0, 5], fov: 50 }}>
+    <Canvas style={{ height: '100%', width: '100%' }} camera={{ position: [0, 0, 5], fov: 50 }}>
       <ambientLight intensity={0.5} />
-      <directionalLight position={[5, 5, 5]} intensity={1} /> 
+      <directionalLight position={[5, 5, 5]} intensity={1} />
       <CubeGroup />
     </Canvas>
   );
 }
-
