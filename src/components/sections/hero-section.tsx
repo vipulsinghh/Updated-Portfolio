@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import TypingAnimation from "@/components/ui/typing-animation";
 import { ArrowRightIcon, BriefcaseIcon } from "lucide-react";
+// No longer importing 3D components
 
 export default function HeroSection() {
   const textsToType = [
@@ -59,7 +60,7 @@ export default function HeroSection() {
 
           {/* Right side: Static Image */}
           <div className="w-full flex justify-center items-center md:justify-end">
-            <div className="relative w-[500px] h-[500px] rounded-full overflow-hidden shadow-xl border-4 border-accent bg-pink-500"> {/* Added bg-pink-500 for debugging */}
+            <div className="relative w-[500px] h-[500px] rounded-full overflow-hidden shadow-xl border-4 border-accent">
               <Image
                 src="/Profile Hero Sec.PNG"
                 alt="Vipul Kumar Singh - Profile Picture"
