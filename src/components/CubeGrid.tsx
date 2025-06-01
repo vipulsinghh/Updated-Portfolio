@@ -2,7 +2,7 @@
 "use client";
 import { Canvas, useFrame } from "@react-three/fiber";
 import type { Mesh } from "three"; // Using import type for Mesh
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 function Cube({ position }: { position: [number, number, number] }) {
   const meshRef = useRef<Mesh>(null!);
@@ -36,7 +36,6 @@ function CubeGroup() {
     }
   }
 
-
   return (
     <group ref={groupRef} scale={0.75}> {/* Slightly scale down the group for better fit */}
       {positions.map((pos, idx) => (
@@ -47,20 +46,20 @@ function CubeGroup() {
 }
 
 export default function CubeGrid() {
-  const [isClient, setIsClient] = React.useState(false);
+  const [isClient, setIsClient] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setIsClient(true);
   }, []);
 
   if (!isClient) {
-    return <div style={{ height: "300px", width: "300px" }} />; // Placeholder for SSR
+    return null; // Return null or a minimal placeholder
   }
 
   return (
-    <Canvas style={{ height: 300, width: 300 }} camera={{ position: [0, 0, 5], fov: 50 }}> {/* Adjusted camera */}
-      <ambientLight intensity={0.5} /> {/* Increased ambient light slightly */}
-      <directionalLight position={[5, 5, 10]} intensity={1.5} /> {/* Adjusted directional light */}
+    <Canvas style={{ height: 300, width: 300 }} camera={{ position: [0, 0, 5], fov: 50 }}>
+      <ambientLight intensity={0.5} />
+      <directionalLight position={[5, 5, 10]} intensity={1.5} />
       <CubeGroup />
     </Canvas>
   );
