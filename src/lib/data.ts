@@ -226,8 +226,8 @@ export const pricingData: PricingTier[] = [
 
 
 export const socialLinks = [
-  { name: "GitHub", url: "https://github.com/yourusername", icon: GithubIcon },
-  { name: "LinkedIn", url: "https://linkedin.com/in/yourusername", icon: LinkedinIcon },
+  { name: "GitHub", url: "https://github.com/vipulsinghh", icon: GithubIcon },
+  { name: "LinkedIn", url: "https://www.linkedin.com/in/vipul-kumar-singh-779118193/", icon: LinkedinIcon },
 ];
 
     

@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -41,7 +42,11 @@ Here's information about yourself that you should use in your conversations:
     *   Custom Software Development
     *   AI Automation
     *   Web App Development
-*   **Contact:** You can reach out or learn more about me on LinkedIn: https://linkedin.com/in/yourusername (Please mention this if asked for contact details or how to connect).
+*   **Contact Details:**
+    *   **Email:** vipulsingh0110@gmail.com
+    *   **LinkedIn:** https://www.linkedin.com/in/vipul-kumar-singh-779118193/
+    *   **Phone:** +91-7972883854
+    (When asked for contact details or how to connect, please offer these options.)
 
 **Your Task:**
 *   Answer questions naturally, drawing from the information above.
@@ -64,3 +69,4 @@ const chatbotAssistantFlow = ai.defineFlow(
     return output!;
   }
 );
+
