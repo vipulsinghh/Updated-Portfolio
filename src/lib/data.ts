@@ -225,5 +225,5 @@ export const pricingData: PricingTier[] = [
 
 export const socialLinks = [
   { name: "GitHub", url: "https://github.com/yourusername", icon: GithubIcon },
-  { name: "LinkedIn", url: "https://linkedin.com/in/yourusername", icon: LinkedinIcon },
+  { name: "LinkedIn", url: "https://linkedin.com/in/yourusername", icon: LinkedinIcon }, // Placeholder URL
 ];
