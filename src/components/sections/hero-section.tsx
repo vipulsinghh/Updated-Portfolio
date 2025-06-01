@@ -1,8 +1,17 @@
+
+"use client"; // Keep hero section as client component if it uses client-side hooks like TypingAnimation
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import TypingAnimation from "@/components/ui/typing-animation";
 import { ArrowRightIcon, BriefcaseIcon } from "lucide-react";
-import ThreeCube from "../ThreeCube"; // Adjust path if needed
+import dynamic from 'next/dynamic';
+
+// Dynamically import ThreeCube with SSR turned off
+const ThreeCube = dynamic(() => import('../ThreeCube'), {
+  ssr: false,
+  // Optional: add a loading component if needed
+  // loading: () => <div className="w-full h-[300px] md:h-[400px] flex justify-center items-center"><p>Loading 3D Cube...</p></div>,
+});
 
 const HeroSection = () => {
   const textsToType = [
@@ -54,6 +63,7 @@ const HeroSection = () => {
             </div>
           </div>
           <div className="w-full h-[300px] md:h-[400px] flex justify-center items-center">
+            {/* Render the dynamically imported ThreeCube component */}
             <ThreeCube />
           </div>
         </div>
