@@ -1,7 +1,7 @@
 
 "use client";
 import Link from "next/link";
-import { MenuIcon, XIcon, FileTextIcon } from "lucide-react"; 
+import { MenuIcon, XIcon, FileTextIcon } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
@@ -10,36 +10,37 @@ import { cn } from "@/lib/utils";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const resumeFileName = "/documents/Vipul_Kumar_Singh_Resume.pdf"; // You can change this if your file is named differently
 
-  const renderNavLinks = (isMobile: boolean = false) =>
-    navLinks.map((link) => (
-      <Button
-        key={link.href}
-        variant="ghost"
-        asChild
-        className={cn(
-          "font-medium text-foreground/80 hover:text-accent", 
-          isMobile ? "w-full justify-start text-lg py-4" : "text-sm"
-        )}
-        onClick={() => isMobile && setIsMobileMenuOpen(false)}
-      >
-        <Link href={link.href}>
-          {link.icon && <link.icon className="mr-2 h-4 w-4" />}
-          {link.label}
-        </Link>
-      </Button>
-    ));
+  // Helper function to render the content of a nav link button
+  // This removes the direct onClick={() => isMobile && setIsMobileMenuOpen(false)}
+  // as SheetClose will handle it.
+  const navLinkButtonContent = (link: NavLink, isMobile: boolean) => (
+    <Button
+      key={link.href}
+      variant="ghost"
+      asChild
+      className={cn(
+        "font-medium text-foreground/80 hover:text-accent",
+        isMobile ? "w-full justify-start text-lg py-4" : "text-sm"
+      )}
+    >
+      <Link href={link.href}>
+        {link.icon && <link.icon className="mr-2 h-4 w-4" />}
+        {link.label}
+      </Link>
+    </Button>
+  );
 
-  const resumeButton = (isMobile: boolean = false) => (
+  // Helper function to render the content of the resume button
+  // This removes the direct onClick={() => isMobile && setIsMobileMenuOpen(false)}
+  const resumeButtonContent = (isMobile: boolean) => (
     <Button
       variant="default"
       asChild
       className={cn(
         "bg-accent text-background hover:bg-accent/90 font-semibold",
-        isMobile ? "w-full justify-start text-lg py-4" : "text-sm px-4 py-2" 
+        isMobile ? "w-full justify-start text-lg py-4" : "text-sm px-4 py-2"
       )}
-      onClick={() => isMobile && setIsMobileMenuOpen(false)}
     >
       <a href="/documents/Vipul_Kumar_Singh_Resume.pdf" download>
         <FileTextIcon className="mr-2 h-4 w-4" />
@@ -54,12 +55,12 @@ const Navbar = () => {
         <div className="flex items-center">
           {/* Desktop Resume Button */}
           <div className="hidden md:block">
-            {resumeButton()}
+            {resumeButtonContent(false)}
           </div>
         </div>
 
         <nav className="hidden md:flex items-center space-x-1">
-          {renderNavLinks()}
+          {navLinks.map((link) => navLinkButtonContent(link, false))}
         </nav>
 
         <div className="md:hidden flex items-center">
@@ -72,7 +73,7 @@ const Navbar = () => {
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-background p-6 border-l border-border/50">
               <div className="flex justify-between items-center mb-6">
-                <div className="w-auto h-8"></div>
+                <div className="w-auto h-8"></div> {/* Placeholder for logo/title if any */}
                 <SheetClose asChild>
                    <Button variant="ghost" size="icon">
                     <XIcon className="h-6 w-6 text-accent" />
@@ -81,11 +82,18 @@ const Navbar = () => {
                 </SheetClose>
               </div>
               <nav className="flex flex-col space-y-2">
-                {/* Mobile Resume Button */}
+                {/* Mobile Resume Button - wrapped with SheetClose */}
                 <div className="mb-2">
-                 {resumeButton(true)}
+                 <SheetClose asChild>
+                    {resumeButtonContent(true)}
+                  </SheetClose>
                 </div>
-                {renderNavLinks(true)}
+                {/* Mobile Nav Links - each wrapped with SheetClose */}
+                {navLinks.map((link) => (
+                  <SheetClose asChild key={link.href}>
+                    {navLinkButtonContent(link, true)}
+                  </SheetClose>
+                ))}
               </nav>
             </SheetContent>
           </Sheet>
