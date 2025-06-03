@@ -10,7 +10,7 @@ export interface NavLink {
 
 export const navLinks: NavLink[] = [
   { href: "#hero", label: "Home" },
-  { href: "#ai-assistant", label: "AI Assistant", icon: BotIcon }, // New AI Assistant link
+  { href: "#ai-assistant", label: "AI Assistant", icon: BotIcon },
   { href: "#connect", label: "Connect", icon: MailIcon },
   { href: "#education", label: "Education" },
   { href: "#skills", label: "Skills" },
@@ -113,36 +113,68 @@ export interface Project {
 
 export const projectsData: Project[] = [
   {
-    id: "proj1",
-    title: "AI Powered E-commerce Platform",
-    description: "Personalized shopping experience using AI recommendations.",
-    longDescription: "Developed an e-commerce platform with AI-driven product recommendations, intelligent search, and automated customer support chatbot. Leveraged Next.js for frontend, Firebase for backend, and Genkit for AI features.",
-    techStack: ["Next.js", "Firebase", "Genkit", "TypeScript"],
+    id: "paytm-clone",
+    title: "Paytm Wallet Clone",
+    description: "Implemented user authentication and authorization. Designed relational database schema using MongoDB and integrated API.",
+    longDescription: "Implemented user authentication and authorization features for a Paytm wallet clone. Designed a relational database schema using MongoDB and integrated necessary APIs for core wallet functionalities.",
+    techStack: ["MongoDB", "Express.js", "React", "Node.js", "API Integration"],
     imageUrl: "https://placehold.co/600x400.png",
-    imageAiHint: "ecommerce ai",
-    githubUrl: "https://github.com/vipulsinghh", // Updated
+    imageAiHint: "digital wallet payment",
+    githubUrl: "https://github.com/vipulsinghh",
     liveDemoUrl: "#",
   },
   {
-    id: "proj2",
-    title: "Workflow Automation Tool",
-    description: "Custom tool to automate repetitive business tasks.",
-    longDescription: "Built a web application that allows businesses to design and automate custom workflows. Integrated various third-party APIs and used Node.js for the backend logic.",
-    techStack: ["React", "Node.js", "MongoDB", "Python"],
+    id: "twitter-clone",
+    title: "Twitter Clone",
+    description: "Developed REST APIs for data retrieval and updates. Implemented real-time push notifications using Socket.IO and React.",
+    longDescription: "Developed REST APIs for data retrieval and updates for a Twitter clone. Implemented real-time push notifications using Socket.IO and React to enhance user engagement and provide instant updates.",
+    techStack: ["React", "Node.js", "Express.js", "Socket.IO", "REST APIs"],
     imageUrl: "https://placehold.co/600x400.png",
-    imageAiHint: "workflow automation",
-    githubUrl: "https://github.com/vipulsinghh", // Updated
+    imageAiHint: "social media feed",
+    githubUrl: "https://github.com/vipulsinghh",
+    liveDemoUrl: "#",
   },
   {
-    id: "proj3",
-    title: "Data Visualization Dashboard",
-    description: "Interactive dashboard for analyzing complex datasets.",
-    longDescription: "Created a dynamic data visualization dashboard using D3.js and React, enabling users to explore and understand large datasets through interactive charts and graphs.",
-    techStack: ["React", "D3.js", "Python", "Flask"],
+    id: "personal-portfolio-website",
+    title: "Personal Portfolio Website",
+    description: "Enhanced skills in HTML, CSS, JavaScript, and responsive design. Implemented dynamic content and optimized for user experience.",
+    longDescription: "This very website, showcasing skills and projects. Enhanced skills in HTML, CSS, JavaScript, and responsive design. Implemented dynamic content and optimized for user experience using Next.js, Tailwind CSS, and Genkit.",
+    techStack: ["Next.js", "React", "Tailwind CSS", "TypeScript", "Genkit"],
     imageUrl: "https://placehold.co/600x400.png",
-    imageAiHint: "data dashboard",
+    imageAiHint: "portfolio site",
+    githubUrl: "https://github.com/vipulsinghh",
     liveDemoUrl: "#",
-    githubUrl: "https://github.com/vipulsinghh", // Updated
+  },
+  {
+    id: "micro-instagram-backend",
+    title: "Micro Instagram Backend",
+    description: "Developed RESTful APIs for user and post management. Implemented features like user authentication, authorization, and data validation for a robust backend system.",
+    longDescription: "Developed RESTful APIs for user and post management for a micro Instagram backend. Implemented features like user authentication, authorization, and data validation to ensure a robust and secure backend system.",
+    techStack: ["Node.js", "Express.js", "MongoDB", "JWT", "API Design"],
+    imageUrl: "https://placehold.co/600x400.png",
+    imageAiHint: "photo API backend",
+    githubUrl: "https://github.com/vipulsinghh",
+  },
+  {
+    id: "image-entities-extraction",
+    title: "Image Entities Extraction",
+    description: "Developed a dimension extraction pipeline using Google Vision API and CNNs. Achieved 65% accuracy on 200,000 samples.",
+    longDescription: "Developed a dimension extraction pipeline using Google Vision API and Convolutional Neural Networks (CNNs). Processed a large dataset of 200,000 samples and achieved 65% accuracy in extracting entities.",
+    techStack: ["Python", "Google Vision API", "TensorFlow", "Keras", "CNNs"],
+    imageUrl: "https://placehold.co/600x400.png",
+    imageAiHint: "AI image analysis",
+    githubUrl: "https://github.com/vipulsinghh",
+  },
+  {
+    id: "ai-trip-matching-app",
+    title: "AI-Powered Group Trip Matching App",
+    description: "Developed a platform for personalized trip recommendations using AI/ML. Designed UI/UX with Figma and implemented features.",
+    longDescription: "Developed a platform for personalized group trip recommendations using AI/ML algorithms. Designed the UI/UX with Figma and implemented core features including user profiling, matching logic, and trip planning capabilities.",
+    techStack: ["Python", "Scikit-learn", "Next.js", "Firebase", "Figma"],
+    imageUrl: "https://placehold.co/600x400.png",
+    imageAiHint: "travel planning AI",
+    githubUrl: "https://github.com/vipulsinghh",
+    liveDemoUrl: "#",
   },
 ];
 
@@ -227,6 +259,6 @@ export const pricingData: PricingTier[] = [
 
 
 export const socialLinks = [
-  { name: "GitHub", url: "https://github.com/vipulsinghh", icon: GithubIcon }, // Ensured this is correct
+  { name: "GitHub", url: "https://github.com/vipulsinghh", icon: GithubIcon },
   { name: "LinkedIn", url: "https://www.linkedin.com/in/vipul-kumar-singh-779118193/", icon: LinkedinIcon },
 ];
