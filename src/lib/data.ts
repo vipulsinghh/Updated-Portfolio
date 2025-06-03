@@ -1,5 +1,5 @@
 
-import { Code2Icon, ServerIcon, BrainCircuitIcon, DatabaseIcon, TerminalIcon, BriefcaseIcon, GraduationCapIcon, UsersIcon, DollarSignIcon, GithubIcon, LinkedinIcon, GlobeIcon, BarChartIcon, LayersIcon, BotIcon, PaletteIcon, MailIcon, MessageCircleIcon, PhoneIcon } from 'lucide-react';
+import { Code2Icon, ServerIcon, BrainCircuitIcon, DatabaseIcon, TerminalIcon, BriefcaseIcon, GraduationCapIcon, UsersIcon, DollarSignIcon, GithubIcon, LinkedinIcon, GlobeIcon, BarChartIcon, LayersIcon, BotIcon, PaletteIcon, MailIcon, MessageCircleIcon, PhoneIcon, FileTextIcon } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 export interface NavLink {
@@ -29,17 +29,17 @@ export interface EducationItem {
 
 export const educationData: EducationItem[] = [
   {
-    degree: "Master of Computer Applications",
-    institution: "XYZ University",
-    year: "2017-2019",
-    description: "Focused on advanced software development principles and application design.",
+    degree: "B.Tech. (CSE)",
+    institution: "Sharda University",
+    year: "Expected 2025",
+    description: "Pursuing a Bachelor of Technology in Computer Science and Engineering, focusing on core software engineering principles and advanced computing topics.",
     icon: GraduationCapIcon,
   },
   {
-    degree: "Bachelor of Science in Computer Science",
-    institution: "ABC College",
-    year: "2014-2017",
-    description: "Comprehensive study of core computer science concepts.",
+    degree: "Minor in AI",
+    institution: "IIT Ropar",
+    year: "Expected 2025 (Pursuing)",
+    description: "Completing a minor degree in Artificial Intelligence, gaining specialized knowledge in machine learning, data science, and AI applications.",
     icon: GraduationCapIcon,
   },
 ];
@@ -115,65 +115,65 @@ export const projectsData: Project[] = [
   {
     id: "paytm-clone",
     title: "Paytm Wallet Clone",
-    description: "Implemented user authentication and authorization. Designed relational database schema using MongoDB and integrated API.",
-    longDescription: "Implemented user authentication and authorization features for a Paytm wallet clone. Designed a relational database schema using MongoDB and integrated necessary APIs for core wallet functionalities.",
-    techStack: ["MongoDB", "Express.js", "React", "Node.js", "API Integration"],
+    description: "A feature-rich clone of the Paytm wallet with user authentication and transaction capabilities.",
+    longDescription: "Implemented user authentication and authorization features for a Paytm wallet clone. Designed a relational database schema using MongoDB and integrated necessary APIs for core wallet functionalities such as balance management, peer-to-peer transfers, and transaction history.",
+    techStack: ["MongoDB", "Express.js", "React", "Node.js", "JWT", "API Integration"],
     imageUrl: "https://placehold.co/600x400.png",
     imageAiHint: "digital wallet payment",
-    githubUrl: "https://github.com/vipulsinghh",
+    githubUrl: "https://github.com/vipulsinghh/Paytm_Clone_Basic",
     liveDemoUrl: "#",
   },
   {
     id: "twitter-clone",
     title: "Twitter Clone",
-    description: "Developed REST APIs for data retrieval and updates. Implemented real-time push notifications using Socket.IO and React.",
-    longDescription: "Developed REST APIs for data retrieval and updates for a Twitter clone. Implemented real-time push notifications using Socket.IO and React to enhance user engagement and provide instant updates.",
-    techStack: ["React", "Node.js", "Express.js", "Socket.IO", "REST APIs"],
+    description: "A web application mimicking Twitter's core features, including real-time updates.",
+    longDescription: "Developed REST APIs for data retrieval and updates for a Twitter clone. Implemented real-time push notifications using Socket.IO and React to enhance user engagement and provide instant updates for tweets, DMs, and notifications. Features include tweeting, following users, and a live feed.",
+    techStack: ["React", "Node.js", "Express.js", "Socket.IO", "MongoDB", "REST APIs"],
     imageUrl: "https://placehold.co/600x400.png",
     imageAiHint: "social media feed",
-    githubUrl: "https://github.com/vipulsinghh",
+    githubUrl: "https://github.com/vipulsinghh/twitter-clone",
     liveDemoUrl: "#",
   },
   {
-    id: "personal-portfolio-website",
-    title: "Personal Portfolio Website",
-    description: "Enhanced skills in HTML, CSS, JavaScript, and responsive design. Implemented dynamic content and optimized for user experience.",
-    longDescription: "This very website, showcasing skills and projects. Enhanced skills in HTML, CSS, JavaScript, and responsive design. Implemented dynamic content and optimized for user experience using Next.js, Tailwind CSS, and Genkit.",
-    techStack: ["Next.js", "React", "Tailwind CSS", "TypeScript", "Genkit"],
-    imageUrl: "https://placehold.co/600x400.png",
-    imageAiHint: "portfolio site",
-    githubUrl: "https://github.com/vipulsinghh",
-    liveDemoUrl: "#",
+    id: "personal-portfolio-website-project",
+    title: "Personal Portfolio Website (This Site)",
+    description: "This website itself, built with Next.js, Tailwind CSS, ShadCN UI, and Genkit for AI capabilities.",
+    longDescription: "The portfolio website you are currently viewing. Designed and developed to showcase my skills and projects. It features a responsive design using Tailwind CSS and ShadCN UI components, interactive UI elements, an AI chatbot powered by Genkit for answering visitor questions, and dynamic content sections for projects, experience, and skills. Hosted on Firebase.",
+    techStack: ["Next.js", "React", "Tailwind CSS", "TypeScript", "ShadCN UI", "Genkit", "Firebase"],
+    imageUrl: "/images/Portflio Profile Hero Sec.PNG", // Using actual image
+    imageAiHint: "portfolio website interface",
+    githubUrl: "https://github.com/vipulsinghh/Portfolio_Website",
+    liveDemoUrl: "#", // Current site, so # is appropriate
   },
   {
     id: "micro-instagram-backend",
     title: "Micro Instagram Backend",
-    description: "Developed RESTful APIs for user and post management. Implemented features like user authentication, authorization, and data validation for a robust backend system.",
-    longDescription: "Developed RESTful APIs for user and post management for a micro Instagram backend. Implemented features like user authentication, authorization, and data validation to ensure a robust and secure backend system.",
-    techStack: ["Node.js", "Express.js", "MongoDB", "JWT", "API Design"],
+    description: "A robust backend system for a simplified Instagram-like application, focusing on API design.",
+    longDescription: "Developed RESTful APIs for user and post management for a micro Instagram backend. Implemented features like user authentication (JWT-based), authorization, data validation, image uploads, and relationship management (followers/following). Focused on creating a scalable and secure backend architecture.",
+    techStack: ["Node.js", "Express.js", "MongoDB", "JWT", "Multer", "API Design"],
     imageUrl: "https://placehold.co/600x400.png",
     imageAiHint: "photo API backend",
-    githubUrl: "https://github.com/vipulsinghh",
+    githubUrl: "https://github.com/vipulsinghh/Micro-Instagram_Backend",
   },
   {
     id: "image-entities-extraction",
     title: "Image Entities Extraction",
-    description: "Developed a dimension extraction pipeline using Google Vision API and CNNs. Achieved 65% accuracy on 200,000 samples.",
-    longDescription: "Developed a dimension extraction pipeline using Google Vision API and Convolutional Neural Networks (CNNs). Processed a large dataset of 200,000 samples and achieved 65% accuracy in extracting entities.",
-    techStack: ["Python", "Google Vision API", "TensorFlow", "Keras", "CNNs"],
+    description: "An AI pipeline to extract dimensional entities from images using Google Vision API and CNNs.",
+    longDescription: "Developed a dimension extraction pipeline using Google Vision API for initial object detection and Convolutional Neural Networks (CNNs) for fine-tuning entity recognition from images. Processed a large dataset of 200,000 samples and achieved 65% accuracy in extracting specific dimensional entities for an industrial application.",
+    techStack: ["Python", "Google Vision API", "TensorFlow", "Keras", "CNNs", "OpenCV"],
     imageUrl: "https://placehold.co/600x400.png",
     imageAiHint: "AI image analysis",
-    githubUrl: "https://github.com/vipulsinghh",
+    githubUrl: "https://github.com/vipulsinghh/Image_Dimension_Extraction",
   },
   {
     id: "ai-trip-matching-app",
     title: "AI-Powered Group Trip Matching App",
-    description: "Developed a platform for personalized trip recommendations using AI/ML. Designed UI/UX with Figma and implemented features.",
-    longDescription: "Developed a platform for personalized group trip recommendations using AI/ML algorithms. Designed the UI/UX with Figma and implemented core features including user profiling, matching logic, and trip planning capabilities.",
-    techStack: ["Python", "Scikit-learn", "Next.js", "Firebase", "Figma"],
+    description: "A platform connecting users for group trips based on personalized AI-driven recommendations.",
+    longDescription: "Developed a platform for personalized group trip recommendations using AI/ML algorithms to match users with similar travel preferences, budgets, and interests. Designed the UI/UX with Figma and implemented core features including user profiling, a collaborative trip planning interface, and a matching logic based on compatibility scores.",
+    techStack: ["Python", "Scikit-learn", "Next.js", "Firebase", "Figma", "AI/ML"],
     imageUrl: "https://placehold.co/600x400.png",
     imageAiHint: "travel planning AI",
-    githubUrl: "https://github.com/vipulsinghh",
+    githubUrl: "https://github.com/vipulsinghh/AI_Trip_Matcher",
     liveDemoUrl: "#",
   },
 ];
@@ -190,32 +190,29 @@ export interface ExperienceItem {
 
 export const experienceData: ExperienceItem[] = [
   {
-    role: "Freelance Software Developer",
-    company: "Self-Employed",
-    companyLogoUrl: "https://placehold.co/100x100.png",
-    companyLogoAiHint: "freelancer logo",
-    duration: "2021 - Present",
+    role: "Web Developer",
+    company: "Neophyte Consulting Services",
+    companyLogoUrl: "https://placehold.co/100x100.png", // Replace with actual if available
+    companyLogoAiHint: "consulting logo",
+    duration: "Apr 2024 - Jun 2024",
     responsibilities: [
-      "Developed custom software solutions for various clients.",
-      "Implemented AI-powered automation for business processes.",
-      "Designed and built responsive web applications using modern frameworks.",
-      "Managed full project lifecycle from requirements gathering to deployment.",
+      "Learned and applied skills in the MERN stack (MongoDB, Express.js, React, Node.js).",
+      "Developed full-stack web applications, managed databases, created RESTful APIs, and built dynamic, responsive user interfaces.",
     ],
     icon: BriefcaseIcon,
   },
   {
-    role: "Software Engineer",
-    company: "Tech Solutions Inc.",
-    companyLogoUrl: "https://placehold.co/100x100.png",
-    companyLogoAiHint: "tech company",
-    duration: "2019 - 2021",
+    role: "AIML Associate Intern",
+    company: "Techgyan Technologies",
+    companyLogoUrl: "https://placehold.co/100x100.png", // Replace with actual if available
+    companyLogoAiHint: "tech company logo",
+    duration: "Jun 2023 - Aug 2023",
     responsibilities: [
-      "Contributed to the development of enterprise-level web applications.",
-      "Collaborated with cross-functional teams in an Agile environment.",
-      "Worked on backend development using Node.js and Python.",
-      "Participated in code reviews and mentored junior developers.",
+      "Developed a predictive Machine Learning model improving data analytics by 20%.",
+      "Collaborated with a team of 4 to design and implement a project management tool.",
+      "Refined algorithmic efficiency for project workflows, reducing process time by 15%.",
     ],
-    icon: BriefcaseIcon,
+    icon: BrainCircuitIcon,
   },
 ];
 
@@ -257,8 +254,30 @@ export const pricingData: PricingTier[] = [
   },
 ];
 
-
 export const socialLinks = [
   { name: "GitHub", url: "https://github.com/vipulsinghh", icon: GithubIcon },
   { name: "LinkedIn", url: "https://www.linkedin.com/in/vipul-kumar-singh-779118193/", icon: LinkedinIcon },
+];
+
+export const heroSocialLinks = [
+  {
+    name: "GitHub",
+    url: "https://github.com/vipulsinghh",
+    icon: GithubIcon,
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/vipul-kumar-singh-779118193/",
+    icon: LinkedinIcon,
+  },
+  {
+    name: "Email",
+    url: "mailto:vipulsingh0110@gmail.com",
+    icon: MailIcon,
+  },
+  {
+    name: "Phone",
+    url: "tel:+917972883854",
+    icon: PhoneIcon,
+  },
 ];
