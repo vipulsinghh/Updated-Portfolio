@@ -102,6 +102,7 @@ export default function HeroSection() {
                 layout="fill"
                 objectFit="cover"
                 className="object-cover w-full h-full"
+                objectPosition="center 70%" 
                 priority
               />
             </div>

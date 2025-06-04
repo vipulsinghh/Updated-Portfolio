@@ -118,8 +118,7 @@ export const projectsData: Project[] = [
     description: "A feature-rich clone of the Paytm wallet with user authentication and transaction capabilities.",
     longDescription: "Implemented user authentication and authorization features for a Paytm wallet clone. Designed a relational database schema using MongoDB and integrated necessary APIs for core wallet functionalities such as balance management, peer-to-peer transfers, and transaction history.",
     techStack: ["MongoDB", "Express.js", "React", "Node.js", "JWT", "API Integration"],
-    imageUrl: "https://placehold.co/600x400.png",
-    imageAiHint: "digital wallet payment",
+    imageUrl: "https://i.pinimg.com/564x/d2/3c/bf/d23cbf926d0672238d35ff3486a8c7a3.jpg",
     githubUrl: "https://github.com/vipulsinghh/Paytm_Clone_Basic",
     liveDemoUrl: "#",
   },
@@ -129,8 +128,7 @@ export const projectsData: Project[] = [
     description: "A web application mimicking Twitter's core features, including real-time updates.",
     longDescription: "Developed REST APIs for data retrieval and updates for a Twitter clone. Implemented real-time push notifications using Socket.IO and React to enhance user engagement and provide instant updates for tweets, DMs, and notifications. Features include tweeting, following users, and a live feed.",
     techStack: ["React", "Node.js", "Express.js", "Socket.IO", "MongoDB", "REST APIs"],
-    imageUrl: "https://placehold.co/600x400.png",
-    imageAiHint: "social media feed",
+    imageUrl: "https://store-images.s-microsoft.com/image/apps.45406.9007199266244427.4d45042b-d7a5-4a83-be66-97779553b24d.2a88a418-b96d-44a6-ad4f-5e0ee6289b2c",
     githubUrl: "https://github.com/vipulsinghh/twitter-clone",
     liveDemoUrl: "#",
   },
@@ -140,10 +138,9 @@ export const projectsData: Project[] = [
     description: "This website itself, built with Next.js, Tailwind CSS, ShadCN UI, and Genkit for AI capabilities.",
     longDescription: "The portfolio website you are currently viewing. Designed and developed to showcase my skills and projects. It features a responsive design using Tailwind CSS and ShadCN UI components, interactive UI elements, an AI chatbot powered by Genkit for answering visitor questions, and dynamic content sections for projects, experience, and skills. Hosted on Firebase.",
     techStack: ["Next.js", "React", "Tailwind CSS", "TypeScript", "ShadCN UI", "Genkit", "Firebase"],
-    imageUrl: "/images/Portflio Profile Hero Sec.PNG", // Using actual image
-    imageAiHint: "portfolio website interface",
+    imageUrl: "/images/Portflio Profile Hero Sec.PNG", // Using actual image for this card
     githubUrl: "https://github.com/vipulsinghh/Portfolio_Website",
-    liveDemoUrl: "#", // Current site, so # is appropriate
+    liveDemoUrl: "#", 
   },
   {
     id: "micro-instagram-backend",
@@ -151,8 +148,7 @@ export const projectsData: Project[] = [
     description: "A robust backend system for a simplified Instagram-like application, focusing on API design.",
     longDescription: "Developed RESTful APIs for user and post management for a micro Instagram backend. Implemented features like user authentication (JWT-based), authorization, data validation, image uploads, and relationship management (followers/following). Focused on creating a scalable and secure backend architecture.",
     techStack: ["Node.js", "Express.js", "MongoDB", "JWT", "Multer", "API Design"],
-    imageUrl: "https://placehold.co/600x400.png",
-    imageAiHint: "photo API backend",
+    imageUrl: "https://download.logo.wine/logo/Instagram/Instagram-Logo.wine.png",
     githubUrl: "https://github.com/vipulsinghh/Micro-Instagram_Backend",
   },
   {
@@ -161,8 +157,7 @@ export const projectsData: Project[] = [
     description: "An AI pipeline to extract dimensional entities from images using Google Vision API and CNNs.",
     longDescription: "Developed a dimension extraction pipeline using Google Vision API for initial object detection and Convolutional Neural Networks (CNNs) for fine-tuning entity recognition from images. Processed a large dataset of 200,000 samples and achieved 65% accuracy in extracting specific dimensional entities for an industrial application.",
     techStack: ["Python", "Google Vision API", "TensorFlow", "Keras", "CNNs", "OpenCV"],
-    imageUrl: "https://placehold.co/600x400.png",
-    imageAiHint: "AI image analysis",
+    imageUrl: "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-66ab7658502ef_listing_image_ml_challenge__1_.jpg?d=200x200",
     githubUrl: "https://github.com/vipulsinghh/Image_Dimension_Extraction",
   },
   {
@@ -171,8 +166,7 @@ export const projectsData: Project[] = [
     description: "A platform connecting users for group trips based on personalized AI-driven recommendations.",
     longDescription: "Developed a platform for personalized group trip recommendations using AI/ML algorithms to match users with similar travel preferences, budgets, and interests. Designed the UI/UX with Figma and implemented core features including user profiling, a collaborative trip planning interface, and a matching logic based on compatibility scores.",
     techStack: ["Python", "Scikit-learn", "Next.js", "Firebase", "Figma", "AI/ML"],
-    imageUrl: "https://placehold.co/600x400.png",
-    imageAiHint: "travel planning AI",
+    imageUrl: "https://iplan.ai/wp-content/uploads/2022/02/destinations.png",
     githubUrl: "https://github.com/vipulsinghh/AI_Trip_Matcher",
     liveDemoUrl: "#",
   },
@@ -192,7 +186,7 @@ export const experienceData: ExperienceItem[] = [
   {
     role: "Web Developer",
     company: "Neophyte Consulting Services",
-    companyLogoUrl: "https://placehold.co/100x100.png", // Replace with actual if available
+    companyLogoUrl: "https://placehold.co/100x100.png", 
     companyLogoAiHint: "consulting logo",
     duration: "Apr 2024 - Jun 2024",
     responsibilities: [
@@ -204,7 +198,7 @@ export const experienceData: ExperienceItem[] = [
   {
     role: "AIML Associate Intern",
     company: "Techgyan Technologies",
-    companyLogoUrl: "https://placehold.co/100x100.png", // Replace with actual if available
+    companyLogoUrl: "https://placehold.co/100x100.png", 
     companyLogoAiHint: "tech company logo",
     duration: "Jun 2023 - Aug 2023",
     responsibilities: [
